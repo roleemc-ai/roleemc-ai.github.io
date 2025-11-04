@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RO-LEE MC | Guardián del Templo del Hip Hop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://i.ibb.co/2YSq6SWb/IMG-20241031-215343-865.jpg') 
+                        no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #ff5500, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 85, 0, 0.5);
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-top: 20px;
+            color: #ccc;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            color: #ff5500;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff5500, #e04a00);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 85, 0, 0.5);
+        }
+
+        .music {
+            padding: 80px 20px;
+            background-color: #111;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #ff5500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .releases {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .release-card {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .release-card:hover {
+            border-color: #ff5500;
+            transform: translateY(-5px);
+        }
+
+        .release-card h3 {
+            color: #ff5500;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .album-cover {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #333, #555);
+            margin: 20px auto;
+            border-radius: 10px;
+            border: 2px solid #ff5500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ff5500;
+        }
+
+        .status {
+            color: #00ff00;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .links {
+            padding: 60px 20px;
+            background-color: #0a0a0a;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #1a1a1a;
+            color: #ff5500;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .social-link:hover {
+            background: #ff5500;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .contact {
+            padding: 40px 20px;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            text-align: center;
+        }
+
+        .email-link {
+            color: #ff5500;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            padding: 30px 20px;
+            background-color: #000;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #333;
+        }
+
+        .philosophy {
+            padding: 60px 20px;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            text-align: center;
+        }
+
+        .philosophy-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .releases {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .release-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-link {
+                width: 200px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>RO-LEE MC</h1>
+        <p class="subtitle">Gestor cultural | Artista</p>
+        <p class="tagline">Hip Hop Auténtico</p>
+        <a href="#music" class="cta-button">Escucha Mi Música</a>
+    </section>
+
+    <!-- FILOSOFÍA -->
+    <section class="philosophy">
+        <h2 class="section-title">EL MOVIMIENTO SUAVELISTA</h2>
+        <div class="philosophy-text">
+            <p>"Más que un artista, SOY HIPHOP guardián de la esencia. Desde las calles hasta el estudio, mi misión es mantener viva la llama del hip hop auténtico."</p>
+            <p style="margin-top: 20px;">Cada ritmo es una ofrenda al flow sagrado. Cada letra, un manifiesto de conciencia urbana.</p>
+        </div>
+    </section>
+
+    <!-- MÚSICA -->
+    <section id="music" class="music">
+        <h2 class="section-title">LANZAMIENTOS</h2>
+        <div class="releases">
+            <div class="release-card">
+                <h3>SUAVELISTA</h3>
+                <div class="album-cover">🎵</div>
+                <p class="status">✅ DISPONIBLE</p>
+                <p>Mi primer álbum conceptual donde el groove encuentra su flow natural</p>
+            </div>
+            
+            <div class="release-card">
+                <h3>STO ELEMENTO</h3>
+                <div class="album-cover">🔥</div>
+                <p class="status">✅ DISPONIBLE</p>
+                <p>EP que redefine los elementos esenciales del hip hop consciente</p>
+            </div>
+            
+            <div class="release-card">
+                <h3>NORORIENTAL</h3>
+                <div class="album-cover">🚀</div>
+                <p class="status">🔜 PRÓXIMAMENTE</p>
+                <p>Próxima evolución del sonido Suavelista</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REDES SOCIALES -->
+    <section class="links">
+        <h2 class="section-title">CONECTA CON EL TEMPLO</h2>
+        <div class="social-links">
+            <a href="https://open.spotify.com/intl-es/artist/3j2wcVZAQN4SQ65H7WfOOc" class="social-link" target="_blank">🎵 Spotify</a>
+            <a href="https://www.youtube.com/@Ro-leeMC" class="social-link" target="_blank">📺 YouTube</a>
+            <a href="https://www.tiktok.com/@ro_l33mc" class="social-link" target="_blank">📱 TikTok</a>
+            <a href="https://www.facebook.com/profile.php?id=100086806705791" class="social-link" target="_blank">📘 Facebook</a>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact">
+        <h2 class="section-title">CONTACTO</h2>
+        <p>Para colaboraciones, bookings y preguntas:</p>
+        <a href="mailto:dsalcedopajoy@gmail.com" class="email-link">dsalcedopajoy@gmail.com</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
+        <p style="margin-top: 10px; color: #ff5500;">Movimiento Suavelista - Donde el flow es sagrado y el ritmo es ley</p>
+    </footer>
+</body>
+</html>
