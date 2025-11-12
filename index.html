@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RO-LEE MC | Guardián del Templo del Hip Hop</title>
+    <title>RO-LEE MC | Hip Hop Auténtico</title>
     <style>
         * {
             margin: 0;
@@ -134,10 +134,69 @@
             color: #ff5500;
         }
 
+        .custom-cover {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 10px;
+            border: 2px solid #ff5500;
+            background-size: cover;
+            background-position: center;
+        }
+
         .status {
             color: #00ff00;
             font-weight: bold;
             margin: 10px 0;
+        }
+
+        .soon {
+            color: #ffaa00;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .video-section {
+            padding: 60px 20px;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+        }
+
+        .videos-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-item {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .video-title {
+            color: #ff5500;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
         }
 
         .links {
@@ -211,6 +270,13 @@
             color: #ccc;
         }
 
+        .production-info {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
         @media (max-width: 768px) {
             .releases {
                 flex-direction: column;
@@ -245,10 +311,10 @@
 
     <!-- FILOSOFÍA -->
     <section class="philosophy">
-        <h2 class="section-title">EL MOVIMIENTO SUAVELISTA</h2>
+        <h2 class="section-title">SOY HIPHOP</h2>
         <div class="philosophy-text">
-            <p>"Más que un artista, SOY HIPHOP guardián de la esencia. Desde las calles hasta el estudio, mi misión es mantener viva la llama del hip hop auténtico."</p>
-            <p style="margin-top: 20px;">Cada ritmo es una ofrenda al flow sagrado. Cada letra, un manifiesto de conciencia urbana.</p>
+            <p>"Más que un artista, soy guardián de la esencia. Desde las calles hasta el estudio, mi misión es mantener viva la llama del hip hop auténtico."</p>
+            <p style="margin-top: 20px;">Cada ritmo es una ofrenda al flow. Cada letra, un manifiesto de conciencia urbana.</p>
         </div>
     </section>
 
@@ -257,31 +323,57 @@
         <h2 class="section-title">LANZAMIENTOS</h2>
         <div class="releases">
             <div class="release-card">
-                <h3>SUAVELISTA</h3>
-                <div class="album-cover">🎵</div>
-                <p class="status">✅ DISPONIBLE</p>
-                <p>Mi primer álbum conceptual donde el groove encuentra su flow natural</p>
-            </div>
-            
-            <div class="release-card">
-                <h3>STO ELEMENTO</h3>
+                <h3>5TO ELEMENTO</h3>
                 <div class="album-cover">🔥</div>
                 <p class="status">✅ DISPONIBLE</p>
-                <p>EP que redefine los elementos esenciales del hip hop consciente</p>
+                <p>Mi EP que redefine los elementos esenciales del hip hop</p>
+                <p class="production-info">Grabado por KABSTER - MDA</p>
+                <div style="margin-top: 15px;">
+                    <a href="https://open.spotify.com/intl-es/album/3JnxnqVXGnDqiZvQowwMcK?si=PxsTQ2uZSICtTBF5RboT6w" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 8px 15px;">🎵 Spotify</a>
+                    <a href="https://www.youtube.com/channel/UCfpYgGCLM4ZNJHxH4XkrJbw" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 8px 15px;">📺 YouTube</a>
+                </div>
             </div>
             
             <div class="release-card">
                 <h3>NORORIENTAL</h3>
-                <div class="album-cover">🚀</div>
-                <p class="status">🔜 PRÓXIMAMENTE</p>
-                <p>Próxima evolución del sonido Suavelista</p>
+                <div class="custom-cover" style="background-image: url('https://i.ibb.co/4w3v3Lx0/portada-nororiental.jpg');"></div>
+                <p class="soon">🔜 PRÓXIMAMENTE</p>
+                <p>Próxima evolución de mi sonido</p>
+                <div class="custom-cover" style="background-image: url('https://i.ibb.co/07z0qb8/contraportada-nororiental.jpg'); margin-top: 10px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="video-section">
+        <h2 class="section-title">VIDEOS</h2>
+        <div class="videos-container">
+            <div class="video-item">
+                <h3 class="video-title">5TO ELEMENTO</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/CLZo4ZOmOWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <h3 class="video-title">TEMA EXCLUSIVO</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/Cnjqg5yLBCY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <h3 class="video-title">COLABORACIÓN CON MENTES NOCTURNAS</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/CItIptojk2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- REDES SOCIALES -->
     <section class="links">
-        <h2 class="section-title">CONECTA CON EL TEMPLO</h2>
+        <h2 class="section-title">CONECTA</h2>
         <div class="social-links">
             <a href="https://open.spotify.com/intl-es/artist/3j2wcVZAQN4SQ65H7WfOOc" class="social-link" target="_blank">🎵 Spotify</a>
             <a href="https://www.youtube.com/@Ro-leeMC" class="social-link" target="_blank">📺 YouTube</a>
@@ -300,7 +392,7 @@
     <!-- FOOTER -->
     <footer>
         <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
-        <p style="margin-top: 10px; color: #ff5500;">Movimiento Suavelista - Donde el flow es sagrado y el ritmo es ley</p>
+        <p style="margin-top: 10px; color: #ff5500;">Hip Hop Auténtico - Donde el flow es sagrado</p>
     </footer>
 </body>
 </html>
