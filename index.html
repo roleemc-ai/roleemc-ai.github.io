@@ -187,7 +187,7 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
         }
 
         .video-wrapper iframe {
@@ -197,6 +197,91 @@
             width: 100%;
             height: 100%;
             border-radius: 5px;
+        }
+
+        /* ESTILOS NUEVOS PARA EL FORO */
+        .forum-section {
+            padding: 80px 20px;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+        }
+
+        .forum-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #ff5500;
+        }
+
+        .forum-title {
+            text-align: center;
+            color: #ff5500;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .formulario-foro {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .formulario-foro input,
+        .formulario-foro textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: white;
+            font-family: inherit;
+        }
+
+        .formulario-foro textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .btn-publicar {
+            background: linear-gradient(45deg, #ff5500, #e04a00);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-publicar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3);
+        }
+
+        .zona-mensajes {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .mensaje-hiphop {
+            background: #2a2a2a;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ff5500;
+        }
+
+        .mensaje-hiphop strong {
+            color: #ff5500;
+        }
+
+        .mensaje-hiphop small {
+            color: #888;
+            font-size: 0.8rem;
         }
 
         .links {
@@ -371,6 +456,23 @@
         </div>
     </section>
 
+    <!-- NUEVO: FORO PERMANENTE -->
+    <section class="forum-section">
+        <div class="forum-container">
+            <h2 class="forum-title">🎤 EL TEMPLO - DEBATES HIP HOP</h2>
+            
+            <div class="formulario-foro">
+                <input type="text" id="userName" placeholder="Tu nombre o alias">
+                <textarea id="postText" placeholder="Escribe tu debate sobre hip hop... ¿Qué piensas de la escena actual? ¿Qué letra te marcó?"></textarea>
+                <button class="btn-publicar" onclick="publicarMensaje()">🔥 PUBLICAR EN EL TEMPLO</button>
+            </div>
+            
+            <div id="zonaMensajes" class="zona-mensajes">
+                <!-- Los mensajes aparecen aquí automáticamente -->
+            </div>
+        </div>
+    </section>
+
     <!-- REDES SOCIALES -->
     <section class="links">
         <h2 class="section-title">CONECTA</h2>
@@ -394,5 +496,77 @@
         <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
         <p style="margin-top: 10px; color: #ff5500;">Hip Hop Auténtico - Donde el flow es sagrado</p>
     </footer>
+
+    <!-- JAVASCRIPT PARA EL FORO -->
+    <script>
+        function publicarMensaje() {
+            // 1. Capturar datos
+            let nombre = document.getElementById('userName').value;
+            let mensaje = document.getElementById('postText').value;
+            
+            if (!nombre || !mensaje) {
+                alert('🎤 ¡Falta información! Escribe tu nombre y mensaje.');
+                return;
+            }
+            
+            // 2. Crear objeto del mensaje
+            let nuevoMensaje = {
+                nombre: nombre,
+                mensaje: mensaje,
+                fecha: new Date().toLocaleString('es-CO', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+            
+            // 3. Obtener mensajes existentes
+            let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
+            
+            // 4. Agregar nuevo mensaje
+            mensajesGuardados.push(nuevoMensaje);
+            
+            // 5. Guardar en LocalStorage
+            localStorage.setItem('foroHipHop', JSON.stringify(mensajesGuardados));
+            
+            // 6. Actualizar la pantalla
+            mostrarMensajes();
+            
+            // 7. Limpiar formulario
+            document.getElementById('userName').value = '';
+            document.getElementById('postText').value = '';
+        }
+
+        function mostrarMensajes() {
+            let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
+            let zonaMensajes = document.getElementById('zonaMensajes');
+            
+            zonaMensajes.innerHTML = '';
+            
+            if (mensajesGuardados.length === 0) {
+                zonaMensajes.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">🎤 Sé el primero en debatir sobre hip hop...</p>';
+                return;
+            }
+            
+            // Mostrar mensajes en orden inverso (más reciente primero)
+            mensajesGuardados.reverse().forEach((msg, index) => {
+                let mensajeHTML = `
+                    <div class="mensaje-hiphop">
+                        <strong>${msg.nombre}:</strong>
+                        <p>${msg.mensaje}</p>
+                        <small>📅 ${msg.fecha}</small>
+                    </div>
+                `;
+                zonaMensajes.innerHTML += mensajeHTML;
+            });
+        }
+
+        // Cuando la página cargue, mostrar mensajes existentes
+        document.addEventListener('DOMContentLoaded', function() {
+            mostrarMensajes();
+        });
+    </script>
 </body>
 </html>
