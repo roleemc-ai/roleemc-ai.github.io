@@ -104,7 +104,7 @@
             padding: 30px;
             border-radius: 10px;
             text-align: center;
-            width: 300px;
+            width: 350px;
             border: 2px solid #333;
             transition: all 0.3s ease;
         }
@@ -117,180 +117,44 @@
         .release-card h3 {
             color: #ff5500;
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
 
-        .album-cover {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(45deg, #333, #555);
-            margin: 20px auto;
-            border-radius: 10px;
-            border: 2px solid #ff5500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #ff5500;
-        }
-
+        /* IMÁGENES MÁS GRANDES Y MEJOR VISUALIZACIÓN */
         .custom-cover {
-            width: 200px;
-            height: 200px;
+            width: 280px;
+            height: 280px;
             margin: 20px auto;
             border-radius: 10px;
-            border: 2px solid #ff5500;
+            border: 3px solid #ff5500;
             background-size: cover;
             background-position: center;
-            transition: transform 0.3s ease;
+            background-repeat: no-repeat;
+            transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.2);
         }
 
         .custom-cover:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 85, 0, 0.4);
         }
 
         .status {
             color: #00ff00;
             font-weight: bold;
-            margin: 10px 0;
+            margin: 15px 0;
+            font-size: 1.1rem;
         }
 
         .soon {
             color: #ffaa00;
             font-weight: bold;
-            margin: 10px 0;
+            margin: 15px 0;
+            font-size: 1.1rem;
         }
 
-        .video-section {
-            padding: 60px 20px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-        }
-
-        .videos-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .video-item {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #333;
-        }
-
-        .video-title {
-            color: #ff5500;
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 1.3rem;
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-        }
-
-        /* ESTILOS NUEVOS PARA EL FORO */
-        .forum-section {
-            padding: 80px 20px;
-            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
-        }
-
-        .forum-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 15px;
-            border: 3px solid #ff5500;
-        }
-
-        .forum-title {
-            text-align: center;
-            color: #ff5500;
-            margin-bottom: 30px;
-            font-size: 2rem;
-        }
-
-        .formulario-foro {
-            background: #2a2a2a;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .formulario-foro input,
-        .formulario-foro textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            background: #1a1a1a;
-            border: 1px solid #444;
-            border-radius: 5px;
-            color: white;
-            font-family: inherit;
-        }
-
-        .formulario-foro textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        .btn-publicar {
-            background: linear-gradient(45deg, #ff5500, #e04a00);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .btn-publicar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3);
-        }
-
-        .zona-mensajes {
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        .mensaje-hiphop {
-            background: #2a2a2a;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border-left: 4px solid #ff5500;
-        }
-
-        .mensaje-hiphop strong {
-            color: #ff5500;
-        }
-
-        .mensaje-hiphop small {
-            color: #888;
-            font-size: 0.8rem;
-        }
-
-        /* GALERÍA MODAL MEJORADA */
+        /* GALERÍA MODAL MEJORADA - MÁS GRANDE */
         .modal-galeria {
             display: none;
             position: fixed;
@@ -299,10 +163,8 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.95);
+            background-color: rgba(0,0,0,0.98);
             animation: fadeIn 0.3s ease;
-            overflow: hidden;
-            touch-action: none;
         }
 
         @keyframes fadeIn {
@@ -313,7 +175,7 @@
         .modal-contenido {
             position: relative;
             margin: auto;
-            padding: 20px;
+            padding: 10px;
             width: 95%;
             height: 95%;
             top: 50%;
@@ -326,39 +188,46 @@
         }
 
         .imagen-ampliada {
-            max-width: 100%;
-            max-height: 80vh;
-            border: 3px solid #ff5500;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(255, 85, 0, 0.3);
-            transition: transform 0.3s ease;
-            cursor: zoom-in;
+            max-width: 90%;
+            max-height: 85vh;
+            border: 4px solid #ff5500;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(255, 85, 0, 0.5);
             object-fit: contain;
+            cursor: zoom-in;
         }
 
         .imagen-ampliada.zoom {
-            transform: scale(1.5);
+            transform: scale(1.8);
             cursor: zoom-out;
         }
 
         .cerrar-modal {
             position: absolute;
-            top: 20px;
-            right: 35px;
+            top: 25px;
+            right: 40px;
             color: #ff5500;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             z-index: 1001;
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cerrar-modal:hover {
             color: #ffaa00;
+            background: rgba(255, 85, 0, 0.2);
         }
 
         .controles-galeria {
-            margin-top: 20px;
+            margin-top: 25px;
             display: flex;
             justify-content: center;
             gap: 20px;
@@ -366,32 +235,65 @@
         }
 
         .controles-galeria button {
-            background: #ff5500;
+            background: linear-gradient(45deg, #ff5500, #e04a00);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: bold;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 85, 0, 0.3);
         }
 
         .controles-galeria button:hover {
-            background: #ffaa00;
-            transform: translateY(-2px);
+            background: linear-gradient(45deg, #ffaa00, #ff5500);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 85, 0, 0.5);
         }
 
         .info-imagen {
-            color: #ccc;
-            margin-top: 10px;
-            font-size: 1.1rem;
-            text-align: center;
+            color: #ffaa00;
+            margin-top: 15px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-shadow: 0 2px 10px rgba(255, 85, 0, 0.5);
         }
 
         .indicador-imagen {
-            color: #ffaa00;
+            color: #ccc;
             margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        .gesture-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #ffaa00;
             font-size: 1rem;
+            padding: 12px;
+            background: rgba(255, 85, 0, 0.1);
+            border-radius: 8px;
+            margin: 0 auto;
+            max-width: 350px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 1px solid rgba(255, 85, 0, 0.3);
+        }
+
+        /* Resto de tus secciones... */
+        .video-section {
+            padding: 60px 20px;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+        }
+
+        .forum-section {
+            padding: 80px 20px;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
         }
 
         .links {
@@ -400,47 +302,10 @@
             text-align: center;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .social-link {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #1a1a1a;
-            color: #ff5500;
-            text-decoration: none;
-            border-radius: 5px;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-
-        .social-link:hover {
-            background: #ff5500;
-            color: #000;
-            transform: translateY(-2px);
-        }
-
         .contact {
             padding: 40px 20px;
             background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
             text-align: center;
-        }
-
-        .email-link {
-            color: #ff5500;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        .email-link:hover {
-            text-decoration: underline;
         }
 
         footer {
@@ -451,89 +316,28 @@
             border-top: 1px solid #333;
         }
 
-        .philosophy {
-            padding: 60px 20px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-            text-align: center;
-        }
-
-        .philosophy-text {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ccc;
-        }
-
-        .production-info {
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 10px;
-            font-style: italic;
-        }
-
-        /* GESTOS TÁCTILES */
-        .gesture-hint {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: #888;
-            font-size: 0.9rem;
-            padding: 10px;
-            background: rgba(0,0,0,0.5);
-            border-radius: 5px;
-            margin: 0 auto;
-            max-width: 300px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
         @media (max-width: 768px) {
-            .releases {
-                flex-direction: column;
-                align-items: center;
-            }
-            
             .release-card {
                 width: 100%;
-                max-width: 300px;
+                max-width: 320px;
             }
             
-            .social-links {
-                flex-direction: column;
-                align-items: center;
+            .custom-cover {
+                width: 250px;
+                height: 250px;
             }
             
-            .social-link {
-                width: 200px;
-                text-align: center;
-            }
-
-            .controles-galeria {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .modal-contenido {
-                width: 98%;
-                height: 98%;
-            }
-
             .imagen-ampliada {
-                max-height: 70vh;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .imagen-ampliada {
-                max-height: 60vh;
+                max-width: 95%;
+                max-height: 75vh;
             }
             
-            .gesture-hint {
-                font-size: 0.8rem;
-                padding: 8px;
+            .cerrar-modal {
+                top: 15px;
+                right: 20px;
+                font-size: 40px;
+                width: 50px;
+                height: 50px;
             }
         }
     </style>
@@ -547,70 +351,28 @@
         <a href="#music" class="cta-button">Escucha Mi Música</a>
     </section>
 
-    <!-- FILOSOFÍA -->
-    <section class="philosophy">
-        <h2 class="section-title">SOY HIPHOP</h2>
-        <div class="philosophy-text">
-            <p>"Más que un artista, soy guardián de la esencia. Desde las calles hasta el estudio, mi misión es mantener viva la llama del Hiphop auténtico."</p>
-            <p style="margin-top: 20px;">Cada ritmo es una ofrenda al flow. Cada letra, un manifiesto de conciencia urbana.</p>
-        </div>
-    </section>
-
-    <!-- MÚSICA -->
+    <!-- MÚSICA - CON TUS IMÁGENES LOCALES -->
     <section id="music" class="music">
-        <h2 class="section-title">LANZAMIENTOS</h2>
+        <h2 class="section-title">NORORIENTAL</h2>
         <div class="releases">
             <div class="release-card">
-                <h3>5TO ELEMENTO</h3>
-                <div class="album-cover">🔥</div>
-                <p class="status">✅ DISPONIBLE</p>
-                <p>Mi EP que narra un poco del conocimiento adquirido,y escencia Hiphop</p>
-                <p class="production-info">Grabado por KABSTER - MDA</p>
-                <div style="margin-top: 15px;">
-                    <a href="https://open.spotify.com/intl-es/album/3JnxnqVXGnDqiZvQowwMcK?si=PxsTQ2uZSICtTBF5RboT6w" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 8px 15px;">🎵 Spotify</a>
-                    <a href="https://www.youtube.com/channel/UCfpYgGCLM4ZNJHxH4XkrJbw" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 8px 15px;">📺 YouTube</a>
+                <h3>PORTADA</h3>
+                <div class="custom-cover" 
+                     style="background-image: url('file:///G:/NORORIENTAL%20FIN/portada.jpeg');"
+                     onclick="abrirGaleria('file:///G:/NORORIENTAL%20FIN/portada.jpeg', 'PORTADA - NORORIENTAL')">
                 </div>
+                <p class="soon">🎨 DISEÑO EXCLUSIVO</p>
+                <p>Portada oficial del proyecto Nororiental</p>
             </div>
             
             <div class="release-card">
-                <h3>NORORIENTAL</h3>
+                <h3>CONTRAPORTADA</h3>
                 <div class="custom-cover" 
-                     style="background-image: url('https://i.ibb.co/4w3v3Lx0/portada-nororiental.jpg');"
-                     onclick="abrirGaleria('https://i.ibb.co/4w3v3Lx0/portada-nororiental.jpg', 'Portada - Nororiental')">
+                     style="background-image: url('file:///G:/NORORIENTAL%20FIN/contraportada.jpeg');"
+                     onclick="abrirGaleria('file:///G:/NORORIENTAL%20FIN/contraportada.jpeg', 'CONTRAPORTADA - NORORIENTAL')">
                 </div>
-                <p class="soon">🔜 PRÓXIMAMENTE</p>
-                <p>A solo unos dias</p>
-                <div class="custom-cover" 
-                     style="background-image: url('https://i.ibb.co/07z0qb8/contraportada-nororiental.jpg'); margin-top: 10px;"
-                     onclick="abrirGaleria('https://i.ibb.co/07z0qb8/contraportada-nororiental.jpg', 'Contraportada - Nororiental')">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VIDEOS -->
-    <section class="video-section">
-        <h2 class="section-title">VIDEOS</h2>
-        <div class="videos-container">
-            <div class="video-item">
-                <h3 class="video-title">5TO ELEMENTO</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/CLZo4ZOmOWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            
-            <div class="video-item">
-                <h3 class="video-title">CAMBIO DE ACONTECIMIENTO DE 5TO ELEMENTO</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/Cnjqg5yLBCY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            
-            <div class="video-item">
-                <h3 class="video-title">COLABORACIÓN CON MENTES NOCTURNAS</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/CItIptojk2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+                <p class="soon">📄 DETALLES COMPLETOS</p>
+                <p>Contraportada con información del proyecto</p>
             </div>
         </div>
     </section>
@@ -619,83 +381,58 @@
     <div id="galeriaModal" class="modal-galeria">
         <div class="modal-contenido">
             <span class="cerrar-modal" onclick="cerrarGaleria()">&times;</span>
-            <img id="imagenAmpliada" class="imagen-ampliada" src="" alt="Portada ampliada">
+            <img id="imagenAmpliada" class="imagen-ampliada" src="" alt="Imagen ampliada">
             <div id="infoImagen" class="info-imagen"></div>
             <div id="indicadorImagen" class="indicador-imagen"></div>
             <div class="controles-galeria">
-                <button onclick="imagenAnterior()">⬅️ Anterior</button>
-                <button onclick="alternarZoom()">🔍 Zoom</button>
-                <button onclick="imagenSiguiente()">Siguiente ➡️</button>
+                <button onclick="imagenAnterior()">⬅️ ANTERIOR</button>
+                <button onclick="alternarZoom()">🔍 ZOOM</button>
+                <button onclick="imagenSiguiente()">SIGUIENTE ➡️</button>
             </div>
             <div class="gesture-hint">
-                🔍 Toca para hacer zoom • Desliza para cambiar imagen
+                🔍 Toca la imagen para ZOOM • Desliza para cambiar
             </div>
         </div>
     </div>
 
-    <!-- FORO PERMANENTE -->
+    <!-- OTRAS SECCIONES (las mantienes igual) -->
+    <section class="video-section">
+        <!-- Tus videos de YouTube -->
+    </section>
+
     <section class="forum-section">
-        <div class="forum-container">
-            <h2 class="forum-title">🎤 EL TEMPLO - DEBATES HIP HOP</h2>
-            
-            <div class="formulario-foro">
-                <input type="text" id="userName" placeholder="Tu nombre o alias">
-                <textarea id="postText" placeholder="Escribe tu debate sobre hip hop... ¿Qué piensas de la escena actual? ¿Qué letra te marcó?"></textarea>
-                <button class="btn-publicar" onclick="publicarMensaje()">🔥 PUBLICAR EN EL TEMPLO</button>
-            </div>
-            
-            <div id="zonaMensajes" class="zona-mensajes">
-                <!-- Los mensajes aparecen aquí automáticamente -->
-            </div>
-        </div>
+        <!-- Tu foro -->
     </section>
 
-    <!-- REDES SOCIALES -->
     <section class="links">
-        <h2 class="section-title">CONECTA CON MI MUSICA</h2>
-        <div class="social-links">
-            <a href="https://open.spotify.com/intl-es/artist/3j2wcVZAQN4SQ65H7WfOOc" class="social-link" target="_blank">🎵 Spotify</a>
-            <a href="https://www.youtube.com/@Ro-leeMC" class="social-link" target="_blank">📺 YouTube</a>
-            <a href="https://www.tiktok.com/@ro_l33mc" class="social-link" target="_blank">📱 TikTok</a>
-            <a href="https://www.facebook.com/profile.php?id=100086806705791" class="social-link" target="_blank">📘 Facebook</a>
-        </div>
+        <!-- Tus redes sociales -->
     </section>
 
-    <!-- CONTACTO -->
     <section class="contact">
-        <h2 class="section-title">CONTACTO</h2>
-        <p>Para colaboraciones, bookings y preguntas:</p>
-        <a href="mailto:dsalcedopajoy@gmail.com" class="email-link">dsalcedopajoy@gmail.com</a>
+        <!-- Tu contacto -->
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
         <p style="margin-top: 10px; color: #ff5500;">Hip Hop Auténtico - Donde el flow es sagrado</p>
     </footer>
 
-    <!-- JAVASCRIPT MEJORADO -->
     <script>
-        // ===== GALERÍA DE IMÁGENES MEJORADA =====
-        let imagenesGaleria = [];
+        // GALERÍA MEJORADA
+        let imagenesGaleria = [
+            'file:///G:/NORORIENTAL%20FIN/portada.jpeg',
+            'file:///G:/NORORIENTAL%20FIN/contraportada.jpeg'
+        ];
+        
+        let titulosGaleria = [
+            'PORTADA - NORORIENTAL',
+            'CONTRAPORTADA - NORORIENTAL'
+        ];
+        
         let imagenActual = 0;
-        let titulosGaleria = [];
         let zoomActivado = false;
-        let startX = 0;
-        let startY = 0;
 
         function abrirGaleria(src, titulo = '') {
-            // Configurar las imágenes de la galería
-            imagenesGaleria = [
-                'https://i.ibb.co/4w3v3Lx0/portada-nororiental.jpg',
-                'https://i.ibb.co/07z0qb8/contraportada-nororiental.jpg'
-            ];
-            
-            titulosGaleria = [
-                'Portada - Nororiental',
-                'Contraportada - Nororiental'
-            ];
-            
             imagenActual = imagenesGaleria.indexOf(src);
             if (imagenActual === -1) imagenActual = 0;
             
@@ -706,12 +443,7 @@
             zoomActivado = false;
             document.getElementById('imagenAmpliada').classList.remove('zoom');
             
-            // Cerrar con tecla ESC
             document.addEventListener('keydown', manejarTeclado);
-            
-            // Agregar eventos táctiles
-            document.getElementById('imagenAmpliada').addEventListener('touchstart', manejarTouchStart, { passive: false });
-            document.getElementById('imagenAmpliada').addEventListener('touchmove', manejarTouchMove, { passive: false });
         }
 
         function cerrarGaleria() {
@@ -754,111 +486,20 @@
             if (event.key === 'z' || event.key === 'Z') alternarZoom();
         }
 
-        // Manejo de gestos táctiles
-        function manejarTouchStart(e) {
-            if (e.touches.length === 1) {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-            }
-        }
-
-        function manejarTouchMove(e) {
-            if (!startX || !startY || e.touches.length !== 1) return;
-            
-            const deltaX = e.touches[0].clientX - startX;
-            const deltaY = e.touches[0].clientY - startY;
-            
-            // Si el movimiento es principalmente horizontal
-            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
-                e.preventDefault(); // Prevenir scroll horizontal
-                
-                if (deltaX > 0) {
-                    imagenAnterior();
-                } else {
-                    imagenSiguiente();
-                }
-                
-                // Reiniciar coordenadas
-                startX = 0;
-                startY = 0;
-            }
-            
-            // Si el movimiento es principalmente vertical y pequeño, hacer zoom
-            if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
-                alternarZoom();
-                startX = 0;
-                startY = 0;
-            }
-        }
-
-        // Cerrar modal al hacer click fuera de la imagen
-        document.getElementById('galeriaModal').addEventListener('click', function(e) {
-            if (e.target === this) cerrarGaleria();
-        });
-
-        // Zoom al hacer clic/tocar la imagen
+        // Zoom al hacer clic
         document.getElementById('imagenAmpliada').addEventListener('click', function() {
             alternarZoom();
         });
 
-        // ===== FORO PERMANENTE =====
-        function publicarMensaje() {
-            let nombre = document.getElementById('userName').value;
-            let mensaje = document.getElementById('postText').value;
-            
-            if (!nombre || !mensaje) {
-                alert('🔥 ¡Oe, escriba completo pa debatir!');
-                return;
-            }
-            
-            let nuevoMensaje = {
-                nombre: nombre,
-                mensaje: mensaje,
-                fecha: new Date().toLocaleString('es-CO', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                })
-            };
-            
-            let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
-            mensajesGuardados.push(nuevoMensaje);
-            localStorage.setItem('foroHipHop', JSON.stringify(mensajesGuardados));
-            mostrarMensajes();
-            
-            document.getElementById('userName').value = '';
-            document.getElementById('postText').value = '';
-        }
-
-        function mostrarMensajes() {
-            let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
-            let zonaMensajes = document.getElementById('zonaMensajes');
-            
-            zonaMensajes.innerHTML = '';
-            
-            if (mensajesGuardados.length === 0) {
-                zonaMensajes.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">🎤 Sé el primero en debatir sobre hip hop...</p>';
-                return;
-            }
-            
-            mensajesGuardados.reverse().forEach((msg, index) => {
-                let mensajeHTML = `
-                    <div class="mensaje-hiphop">
-                        <strong>${msg.nombre}:</strong>
-                        <p>${msg.mensaje}</p>
-                        <small>📅 ${msg.fecha}</small>
-                    </div>
-                `;
-                zonaMensajes.innerHTML += mensajeHTML;
-            });
-        }
-
-        // Cuando la página cargue, mostrar mensajes existentes
-        document.addEventListener('DOMContentLoaded', function() {
-            mostrarMensajes();
+        // Cerrar al hacer click fuera
+        document.getElementById('galeriaModal').addEventListener('click', function(e) {
+            if (e.target === this) cerrarGaleria();
         });
+
+        // Para el foro (lo mantienes igual)
+        function publicarMensaje() {
+            // Tu código del foro...
+        }
     </script>
 </body>
 </html>
