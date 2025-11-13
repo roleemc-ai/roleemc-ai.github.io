@@ -290,7 +290,7 @@
             font-size: 0.8rem;
         }
 
-        /* GALERÍA MODAL */
+        /* GALERÍA MODAL MEJORADA */
         .modal-galeria {
             display: none;
             position: fixed;
@@ -301,6 +301,8 @@
             height: 100%;
             background-color: rgba(0,0,0,0.95);
             animation: fadeIn 0.3s ease;
+            overflow: hidden;
+            touch-action: none;
         }
 
         @keyframes fadeIn {
@@ -312,19 +314,31 @@
             position: relative;
             margin: auto;
             padding: 20px;
-            width: 90%;
-            max-width: 800px;
+            width: 95%;
+            height: 95%;
             top: 50%;
             transform: translateY(-50%);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .imagen-ampliada {
             max-width: 100%;
-            max-height: 70vh;
+            max-height: 80vh;
             border: 3px solid #ff5500;
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(255, 85, 0, 0.3);
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+            object-fit: contain;
+        }
+
+        .imagen-ampliada.zoom {
+            transform: scale(1.5);
+            cursor: zoom-out;
         }
 
         .cerrar-modal {
@@ -336,6 +350,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: color 0.3s ease;
+            z-index: 1001;
         }
 
         .cerrar-modal:hover {
@@ -347,6 +362,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .controles-galeria button {
@@ -368,7 +384,14 @@
         .info-imagen {
             color: #ccc;
             margin-top: 10px;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .indicador-imagen {
+            color: #ffaa00;
+            margin-top: 10px;
+            font-size: 1rem;
         }
 
         .links {
@@ -449,6 +472,24 @@
             font-style: italic;
         }
 
+        /* GESTOS TÁCTILES */
+        .gesture-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            padding: 10px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 5px;
+            margin: 0 auto;
+            max-width: 300px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         @media (max-width: 768px) {
             .releases {
                 flex-direction: column;
@@ -476,7 +517,23 @@
             }
 
             .modal-contenido {
-                width: 95%;
+                width: 98%;
+                height: 98%;
+            }
+
+            .imagen-ampliada {
+                max-height: 70vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .imagen-ampliada {
+                max-height: 60vh;
+            }
+            
+            .gesture-hint {
+                font-size: 0.8rem;
+                padding: 8px;
             }
         }
     </style>
@@ -558,16 +615,20 @@
         </div>
     </section>
 
-    <!-- GALERÍA MODAL -->
+    <!-- GALERÍA MODAL MEJORADA -->
     <div id="galeriaModal" class="modal-galeria">
         <div class="modal-contenido">
             <span class="cerrar-modal" onclick="cerrarGaleria()">&times;</span>
             <img id="imagenAmpliada" class="imagen-ampliada" src="" alt="Portada ampliada">
             <div id="infoImagen" class="info-imagen"></div>
+            <div id="indicadorImagen" class="indicador-imagen"></div>
             <div class="controles-galeria">
                 <button onclick="imagenAnterior()">⬅️ Anterior</button>
-                <button onclick="cerrarGaleria()">❌ Cerrar</button>
+                <button onclick="alternarZoom()">🔍 Zoom</button>
                 <button onclick="imagenSiguiente()">Siguiente ➡️</button>
+            </div>
+            <div class="gesture-hint">
+                🔍 Toca para hacer zoom • Desliza para cambiar imagen
             </div>
         </div>
     </div>
@@ -613,12 +674,15 @@
         <p style="margin-top: 10px; color: #ff5500;">Hip Hop Auténtico - Donde el flow es sagrado</p>
     </footer>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT MEJORADO -->
     <script>
-        // ===== GALERÍA DE IMÁGENES =====
+        // ===== GALERÍA DE IMÁGENES MEJORADA =====
         let imagenesGaleria = [];
         let imagenActual = 0;
         let titulosGaleria = [];
+        let zoomActivado = false;
+        let startX = 0;
+        let startY = 0;
 
         function abrirGaleria(src, titulo = '') {
             // Configurar las imágenes de la galería
@@ -633,13 +697,21 @@
             ];
             
             imagenActual = imagenesGaleria.indexOf(src);
+            if (imagenActual === -1) imagenActual = 0;
             
-            document.getElementById('imagenAmpliada').src = src;
+            document.getElementById('imagenAmpliada').src = imagenesGaleria[imagenActual];
             document.getElementById('infoImagen').textContent = titulo;
+            actualizarIndicador();
             document.getElementById('galeriaModal').style.display = 'block';
+            zoomActivado = false;
+            document.getElementById('imagenAmpliada').classList.remove('zoom');
             
             // Cerrar con tecla ESC
             document.addEventListener('keydown', manejarTeclado);
+            
+            // Agregar eventos táctiles
+            document.getElementById('imagenAmpliada').addEventListener('touchstart', manejarTouchStart, { passive: false });
+            document.getElementById('imagenAmpliada').addEventListener('touchmove', manejarTouchMove, { passive: false });
         }
 
         function cerrarGaleria() {
@@ -660,17 +732,73 @@
         function actualizarGaleria() {
             document.getElementById('imagenAmpliada').src = imagenesGaleria[imagenActual];
             document.getElementById('infoImagen').textContent = titulosGaleria[imagenActual];
+            actualizarIndicador();
+            zoomActivado = false;
+            document.getElementById('imagenAmpliada').classList.remove('zoom');
+        }
+
+        function actualizarIndicador() {
+            document.getElementById('indicadorImagen').textContent = 
+                `${imagenActual + 1} / ${imagenesGaleria.length}`;
+        }
+
+        function alternarZoom() {
+            zoomActivado = !zoomActivado;
+            document.getElementById('imagenAmpliada').classList.toggle('zoom', zoomActivado);
         }
 
         function manejarTeclado(event) {
             if (event.key === 'Escape') cerrarGaleria();
             if (event.key === 'ArrowRight') imagenSiguiente();
             if (event.key === 'ArrowLeft') imagenAnterior();
+            if (event.key === 'z' || event.key === 'Z') alternarZoom();
+        }
+
+        // Manejo de gestos táctiles
+        function manejarTouchStart(e) {
+            if (e.touches.length === 1) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            }
+        }
+
+        function manejarTouchMove(e) {
+            if (!startX || !startY || e.touches.length !== 1) return;
+            
+            const deltaX = e.touches[0].clientX - startX;
+            const deltaY = e.touches[0].clientY - startY;
+            
+            // Si el movimiento es principalmente horizontal
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
+                e.preventDefault(); // Prevenir scroll horizontal
+                
+                if (deltaX > 0) {
+                    imagenAnterior();
+                } else {
+                    imagenSiguiente();
+                }
+                
+                // Reiniciar coordenadas
+                startX = 0;
+                startY = 0;
+            }
+            
+            // Si el movimiento es principalmente vertical y pequeño, hacer zoom
+            if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
+                alternarZoom();
+                startX = 0;
+                startY = 0;
+            }
         }
 
         // Cerrar modal al hacer click fuera de la imagen
         document.getElementById('galeriaModal').addEventListener('click', function(e) {
             if (e.target === this) cerrarGaleria();
+        });
+
+        // Zoom al hacer clic/tocar la imagen
+        document.getElementById('imagenAmpliada').addEventListener('click', function() {
+            alternarZoom();
         });
 
         // ===== FORO PERMANENTE =====
