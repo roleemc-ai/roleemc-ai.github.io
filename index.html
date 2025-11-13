@@ -142,6 +142,12 @@
             border: 2px solid #ff5500;
             background-size: cover;
             background-position: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .custom-cover:hover {
+            transform: scale(1.05);
         }
 
         .status {
@@ -284,6 +290,87 @@
             font-size: 0.8rem;
         }
 
+        /* GALERÍA MODAL */
+        .modal-galeria {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-contenido {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+        }
+
+        .imagen-ampliada {
+            max-width: 100%;
+            max-height: 70vh;
+            border: 3px solid #ff5500;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 85, 0, 0.3);
+        }
+
+        .cerrar-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #ff5500;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .cerrar-modal:hover {
+            color: #ffaa00;
+        }
+
+        .controles-galeria {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .controles-galeria button {
+            background: #ff5500;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .controles-galeria button:hover {
+            background: #ffaa00;
+            transform: translateY(-2px);
+        }
+
+        .info-imagen {
+            color: #ccc;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
         .links {
             padding: 60px 20px;
             background-color: #0a0a0a;
@@ -382,6 +469,15 @@
                 width: 200px;
                 text-align: center;
             }
+
+            .controles-galeria {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .modal-contenido {
+                width: 95%;
+            }
         }
     </style>
 </head>
@@ -411,7 +507,7 @@
                 <h3>5TO ELEMENTO</h3>
                 <div class="album-cover">🔥</div>
                 <p class="status">✅ DISPONIBLE</p>
-                <p>Mi EP que redefine los elementos esenciales del hip hop</p>
+                <p>Mi EP que narra un poco del conocimiento adquirido,y escencia Hiphop</p>
                 <p class="production-info">Grabado por KABSTER - MDA</p>
                 <div style="margin-top: 15px;">
                     <a href="https://open.spotify.com/intl-es/album/3JnxnqVXGnDqiZvQowwMcK?si=PxsTQ2uZSICtTBF5RboT6w" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 8px 15px;">🎵 Spotify</a>
@@ -421,10 +517,16 @@
             
             <div class="release-card">
                 <h3>NORORIENTAL</h3>
-                <div class="custom-cover" style="background-image: url('https://i.ibb.co/4w3v3Lx0/portada-nororiental.jpg');"></div>
+                <div class="custom-cover" 
+                     style="background-image: url('https://i.ibb.co/4w3v3Lx0/portada-nororiental.jpg');"
+                     onclick="abrirGaleria('https://i.ibb.co/4w3v3Lx0/portada-nororiental.jpg', 'Portada - Nororiental')">
+                </div>
                 <p class="soon">🔜 PRÓXIMAMENTE</p>
-                <p>Próxima evolución de mi sonido</p>
-                <div class="custom-cover" style="background-image: url('https://i.ibb.co/07z0qb8/contraportada-nororiental.jpg'); margin-top: 10px;"></div>
+                <p>A solo unos dias</p>
+                <div class="custom-cover" 
+                     style="background-image: url('https://i.ibb.co/07z0qb8/contraportada-nororiental.jpg'); margin-top: 10px;"
+                     onclick="abrirGaleria('https://i.ibb.co/07z0qb8/contraportada-nororiental.jpg', 'Contraportada - Nororiental')">
+                </div>
             </div>
         </div>
     </section>
@@ -441,7 +543,7 @@
             </div>
             
             <div class="video-item">
-                <h3 class="video-title">TEMA EXCLUSIVO</h3>
+                <h3 class="video-title">CAMBIO DE ACONTECIMIENTO DE 5TO ELEMENTO</h3>
                 <div class="video-wrapper">
                     <iframe src="https://www.youtube.com/embed/Cnjqg5yLBCY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -456,7 +558,21 @@
         </div>
     </section>
 
-    <!-- NUEVO: FORO PERMANENTE -->
+    <!-- GALERÍA MODAL -->
+    <div id="galeriaModal" class="modal-galeria">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarGaleria()">&times;</span>
+            <img id="imagenAmpliada" class="imagen-ampliada" src="" alt="Portada ampliada">
+            <div id="infoImagen" class="info-imagen"></div>
+            <div class="controles-galeria">
+                <button onclick="imagenAnterior()">⬅️ Anterior</button>
+                <button onclick="cerrarGaleria()">❌ Cerrar</button>
+                <button onclick="imagenSiguiente()">Siguiente ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORO PERMANENTE -->
     <section class="forum-section">
         <div class="forum-container">
             <h2 class="forum-title">🎤 EL TEMPLO - DEBATES HIP HOP</h2>
@@ -475,7 +591,7 @@
 
     <!-- REDES SOCIALES -->
     <section class="links">
-        <h2 class="section-title">CONECTA</h2>
+        <h2 class="section-title">CONECTA CON MI MUSICA</h2>
         <div class="social-links">
             <a href="https://open.spotify.com/intl-es/artist/3j2wcVZAQN4SQ65H7WfOOc" class="social-link" target="_blank">🎵 Spotify</a>
             <a href="https://www.youtube.com/@Ro-leeMC" class="social-link" target="_blank">📺 YouTube</a>
@@ -497,19 +613,76 @@
         <p style="margin-top: 10px; color: #ff5500;">Hip Hop Auténtico - Donde el flow es sagrado</p>
     </footer>
 
-    <!-- JAVASCRIPT PARA EL FORO -->
+    <!-- JAVASCRIPT -->
     <script>
+        // ===== GALERÍA DE IMÁGENES =====
+        let imagenesGaleria = [];
+        let imagenActual = 0;
+        let titulosGaleria = [];
+
+        function abrirGaleria(src, titulo = '') {
+            // Configurar las imágenes de la galería
+            imagenesGaleria = [
+                'https://i.ibb.co/4w3v3Lx0/portada-nororiental.jpg',
+                'https://i.ibb.co/07z0qb8/contraportada-nororiental.jpg'
+            ];
+            
+            titulosGaleria = [
+                'Portada - Nororiental',
+                'Contraportada - Nororiental'
+            ];
+            
+            imagenActual = imagenesGaleria.indexOf(src);
+            
+            document.getElementById('imagenAmpliada').src = src;
+            document.getElementById('infoImagen').textContent = titulo;
+            document.getElementById('galeriaModal').style.display = 'block';
+            
+            // Cerrar con tecla ESC
+            document.addEventListener('keydown', manejarTeclado);
+        }
+
+        function cerrarGaleria() {
+            document.getElementById('galeriaModal').style.display = 'none';
+            document.removeEventListener('keydown', manejarTeclado);
+        }
+
+        function imagenSiguiente() {
+            imagenActual = (imagenActual + 1) % imagenesGaleria.length;
+            actualizarGaleria();
+        }
+
+        function imagenAnterior() {
+            imagenActual = (imagenActual - 1 + imagenesGaleria.length) % imagenesGaleria.length;
+            actualizarGaleria();
+        }
+
+        function actualizarGaleria() {
+            document.getElementById('imagenAmpliada').src = imagenesGaleria[imagenActual];
+            document.getElementById('infoImagen').textContent = titulosGaleria[imagenActual];
+        }
+
+        function manejarTeclado(event) {
+            if (event.key === 'Escape') cerrarGaleria();
+            if (event.key === 'ArrowRight') imagenSiguiente();
+            if (event.key === 'ArrowLeft') imagenAnterior();
+        }
+
+        // Cerrar modal al hacer click fuera de la imagen
+        document.getElementById('galeriaModal').addEventListener('click', function(e) {
+            if (e.target === this) cerrarGaleria();
+        });
+
+        // ===== FORO PERMANENTE =====
         function publicarMensaje() {
-            // 1. Capturar datos
             let nombre = document.getElementById('userName').value;
             let mensaje = document.getElementById('postText').value;
             
             if (!nombre || !mensaje) {
-                alert('🎤 ¡Falta información! Escribe tu nombre y mensaje.');
+                alert('🔥 ¡Oe, escriba completo pa debatir!');
                 return;
             }
             
-            // 2. Crear objeto del mensaje
             let nuevoMensaje = {
                 nombre: nombre,
                 mensaje: mensaje,
@@ -522,19 +695,11 @@
                 })
             };
             
-            // 3. Obtener mensajes existentes
             let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
-            
-            // 4. Agregar nuevo mensaje
             mensajesGuardados.push(nuevoMensaje);
-            
-            // 5. Guardar en LocalStorage
             localStorage.setItem('foroHipHop', JSON.stringify(mensajesGuardados));
-            
-            // 6. Actualizar la pantalla
             mostrarMensajes();
             
-            // 7. Limpiar formulario
             document.getElementById('userName').value = '';
             document.getElementById('postText').value = '';
         }
@@ -550,7 +715,6 @@
                 return;
             }
             
-            // Mostrar mensajes en orden inverso (más reciente primero)
             mensajesGuardados.reverse().forEach((msg, index) => {
                 let mensajeHTML = `
                     <div class="mensaje-hiphop">
