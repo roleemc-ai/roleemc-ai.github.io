@@ -104,7 +104,7 @@
             padding: 30px;
             border-radius: 10px;
             text-align: center;
-            width: 350px;
+            width: 300px;
             border: 2px solid #333;
             transition: all 0.3s ease;
         }
@@ -117,44 +117,180 @@
         .release-card h3 {
             color: #ff5500;
             margin-bottom: 15px;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
         }
 
-        /* IMÁGENES MÁS GRANDES Y MEJOR VISUALIZACIÓN */
-        .custom-cover {
-            width: 280px;
-            height: 280px;
+        .album-cover {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #333, #555);
             margin: 20px auto;
             border-radius: 10px;
-            border: 3px solid #ff5500;
+            border: 2px solid #ff5500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ff5500;
+        }
+
+        .custom-cover {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 10px;
+            border: 2px solid #ff5500;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.2);
         }
 
         .custom-cover:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 85, 0, 0.4);
         }
 
         .status {
             color: #00ff00;
             font-weight: bold;
-            margin: 15px 0;
-            font-size: 1.1rem;
+            margin: 10px 0;
         }
 
         .soon {
             color: #ffaa00;
             font-weight: bold;
-            margin: 15px 0;
-            font-size: 1.1rem;
+            margin: 10px 0;
         }
 
-        /* GALERÍA MODAL MEJORADA - MÁS GRANDE */
+        .video-section {
+            padding: 60px 20px;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+        }
+
+        .videos-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-item {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .video-title {
+            color: #ff5500;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        /* ESTILOS NUEVOS PARA EL FORO */
+        .forum-section {
+            padding: 80px 20px;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+        }
+
+        .forum-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #ff5500;
+        }
+
+        .forum-title {
+            text-align: center;
+            color: #ff5500;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .formulario-foro {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .formulario-foro input,
+        .formulario-foro textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: white;
+            font-family: inherit;
+        }
+
+        .formulario-foro textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .btn-publicar {
+            background: linear-gradient(45deg, #ff5500, #e04a00);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-publicar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3);
+        }
+
+        .zona-mensajes {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .mensaje-hiphop {
+            background: #2a2a2a;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ff5500;
+        }
+
+        .mensaje-hiphop strong {
+            color: #ff5500;
+        }
+
+        .mensaje-hiphop small {
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        /* GALERÍA MODAL */
         .modal-galeria {
             display: none;
             position: fixed;
@@ -163,7 +299,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.98);
+            background-color: rgba(0,0,0,0.95);
             animation: fadeIn 0.3s ease;
         }
 
@@ -175,125 +311,64 @@
         .modal-contenido {
             position: relative;
             margin: auto;
-            padding: 10px;
-            width: 95%;
-            height: 95%;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
             top: 50%;
             transform: translateY(-50%);
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
         }
 
         .imagen-ampliada {
-            max-width: 90%;
-            max-height: 85vh;
-            border: 4px solid #ff5500;
-            border-radius: 15px;
-            box-shadow: 0 0 40px rgba(255, 85, 0, 0.5);
-            object-fit: contain;
-            cursor: zoom-in;
-        }
-
-        .imagen-ampliada.zoom {
-            transform: scale(1.8);
-            cursor: zoom-out;
+            max-width: 100%;
+            max-height: 70vh;
+            border: 3px solid #ff5500;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 85, 0, 0.3);
         }
 
         .cerrar-modal {
             position: absolute;
-            top: 25px;
-            right: 40px;
+            top: 20px;
+            right: 35px;
             color: #ff5500;
-            font-size: 50px;
+            font-size: 40px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1001;
-            background: rgba(0,0,0,0.7);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: color 0.3s ease;
         }
 
         .cerrar-modal:hover {
             color: #ffaa00;
-            background: rgba(255, 85, 0, 0.2);
         }
 
         .controles-galeria {
-            margin-top: 25px;
+            margin-top: 20px;
             display: flex;
             justify-content: center;
             gap: 20px;
-            flex-wrap: wrap;
         }
 
         .controles-galeria button {
-            background: linear-gradient(45deg, #ff5500, #e04a00);
+            background: #ff5500;
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: bold;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 85, 0, 0.3);
         }
 
         .controles-galeria button:hover {
-            background: linear-gradient(45deg, #ffaa00, #ff5500);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 85, 0, 0.5);
+            background: #ffaa00;
+            transform: translateY(-2px);
         }
 
         .info-imagen {
-            color: #ffaa00;
-            margin-top: 15px;
-            font-size: 1.4rem;
-            font-weight: bold;
-            text-shadow: 0 2px 10px rgba(255, 85, 0, 0.5);
-        }
-
-        .indicador-imagen {
             color: #ccc;
             margin-top: 10px;
-            font-size: 1.1rem;
-        }
-
-        .gesture-hint {
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: #ffaa00;
-            font-size: 1rem;
-            padding: 12px;
-            background: rgba(255, 85, 0, 0.1);
-            border-radius: 8px;
-            margin: 0 auto;
-            max-width: 350px;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 1px solid rgba(255, 85, 0, 0.3);
-        }
-
-        /* Resto de tus secciones... */
-        .video-section {
-            padding: 60px 20px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-        }
-
-        .forum-section {
-            padding: 80px 20px;
-            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            font-size: 0.9rem;
         }
 
         .links {
@@ -302,10 +377,47 @@
             text-align: center;
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #1a1a1a;
+            color: #ff5500;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .social-link:hover {
+            background: #ff5500;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
         .contact {
             padding: 40px 20px;
             background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
             text-align: center;
+        }
+
+        .email-link {
+            color: #ff5500;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
         }
 
         footer {
@@ -316,28 +428,55 @@
             border-top: 1px solid #333;
         }
 
+        .philosophy {
+            padding: 60px 20px;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            text-align: center;
+        }
+
+        .philosophy-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .production-info {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
         @media (max-width: 768px) {
+            .releases {
+                flex-direction: column;
+                align-items: center;
+            }
+            
             .release-card {
                 width: 100%;
-                max-width: 320px;
+                max-width: 300px;
             }
             
-            .custom-cover {
-                width: 250px;
-                height: 250px;
+            .social-links {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .imagen-ampliada {
-                max-width: 95%;
-                max-height: 75vh;
+            .social-link {
+                width: 200px;
+                text-align: center;
             }
-            
-            .cerrar-modal {
-                top: 15px;
-                right: 20px;
-                font-size: 40px;
-                width: 50px;
-                height: 50px;
+
+            .controles-galeria {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .modal-contenido {
+                width: 95%;
             }
         }
     </style>
@@ -351,98 +490,157 @@
         <a href="#music" class="cta-button">Escucha Mi Música</a>
     </section>
 
-    <!-- MÚSICA - CON TUS IMÁGENES LOCALES -->
+    <!-- FILOSOFÍA -->
+    <section class="philosophy">
+        <h2 class="section-title">SOY HIPHOP</h2>
+        <div class="philosophy-text">
+            <p>"Más que un artista, soy guardián de la esencia. Desde las calles hasta el estudio, mi misión es mantener viva la llama del hip hop auténtico."</p>
+            <p style="margin-top: 20px;">Cada ritmo es una ofrenda al flow. Cada letra, un manifiesto de conciencia urbana.</p>
+        </div>
+    </section>
+
+    <!-- MÚSICA -->
     <section id="music" class="music">
-        <h2 class="section-title">NORORIENTAL</h2>
+        <h2 class="section-title">LANZAMIENTOS</h2>
         <div class="releases">
             <div class="release-card">
-                <h3>PORTADA</h3>
-                <div class="custom-cover" 
-                     style="background-image: url('file:///G:/NORORIENTAL%20FIN/portada.jpeg');"
-                     onclick="abrirGaleria('file:///G:/NORORIENTAL%20FIN/portada.jpeg', 'PORTADA - NORORIENTAL')">
+                <h3>5TO ELEMENTO</h3>
+                <div class="album-cover">🔥</div>
+                <p class="status">✅ DISPONIBLE</p>
+                <p>Mi EP que redefine los elementos esenciales del hip hop</p>
+                <p class="production-info">Grabado por KABSTER - MDA</p>
+                <div style="margin-top: 15px;">
+                    <a href="https://open.spotify.com/intl-es/album/3JnxnqVXGnDqiZvQowwMcK?si=PxsTQ2uZSICtTBF5RboT6w" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 8px 15px;">🎵 Spotify</a>
+                    <a href="https://www.youtube.com/channel/UCfpYgGCLM4ZNJHxH4XkrJbw" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 8px 15px;">📺 YouTube</a>
                 </div>
-                <p class="soon">🎨 DISEÑO EXCLUSIVO</p>
-                <p>Portada oficial del proyecto Nororiental</p>
             </div>
             
             <div class="release-card">
-                <h3>CONTRAPORTADA</h3>
+                <h3>NORORIENTAL</h3>
+                <!-- CAMBIO AQUÍ: Imágenes locales -->
                 <div class="custom-cover" 
-                     style="background-image: url('file:///G:/NORORIENTAL%20FIN/contraportada.jpeg');"
-                     onclick="abrirGaleria('file:///G:/NORORIENTAL%20FIN/contraportada.jpeg', 'CONTRAPORTADA - NORORIENTAL')">
+                     style="background-image: url('file:///G:/NORORIENTAL%20FIN/portada.jpeg');"
+                     onclick="abrirGaleria('file:///G:/NORORIENTAL%20FIN/portada.jpeg', 'Portada - Nororiental')">
                 </div>
-                <p class="soon">📄 DETALLES COMPLETOS</p>
-                <p>Contraportada con información del proyecto</p>
+                <p class="soon">🔜 PRÓXIMAMENTE</p>
+                <p>Próxima evolución de mi sonido</p>
+                <!-- CAMBIO AQUÍ: Imágenes locales -->
+                <div class="custom-cover" 
+                     style="background-image: url('file:///G:/NORORIENTAL%20FIN/contraportada.jpeg'); margin-top: 10px;"
+                     onclick="abrirGaleria('file:///G:/NORORIENTAL%20FIN/contraportada.jpeg', 'Contraportada - Nororiental')">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- GALERÍA MODAL MEJORADA -->
+    <!-- VIDEOS -->
+    <section class="video-section">
+        <h2 class="section-title">VIDEOS</h2>
+        <div class="videos-container">
+            <div class="video-item">
+                <h3 class="video-title">5TO ELEMENTO</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/CLZo4ZOmOWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <h3 class="video-title">TEMA EXCLUSIVO</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/Cnjqg5yLBCY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <h3 class="video-title">COLABORACIÓN CON MENTES NOCTURNAS</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/CItIptojk2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA MODAL -->
     <div id="galeriaModal" class="modal-galeria">
         <div class="modal-contenido">
             <span class="cerrar-modal" onclick="cerrarGaleria()">&times;</span>
-            <img id="imagenAmpliada" class="imagen-ampliada" src="" alt="Imagen ampliada">
+            <img id="imagenAmpliada" class="imagen-ampliada" src="" alt="Portada ampliada">
             <div id="infoImagen" class="info-imagen"></div>
-            <div id="indicadorImagen" class="indicador-imagen"></div>
             <div class="controles-galeria">
-                <button onclick="imagenAnterior()">⬅️ ANTERIOR</button>
-                <button onclick="alternarZoom()">🔍 ZOOM</button>
-                <button onclick="imagenSiguiente()">SIGUIENTE ➡️</button>
-            </div>
-            <div class="gesture-hint">
-                🔍 Toca la imagen para ZOOM • Desliza para cambiar
+                <button onclick="imagenAnterior()">⬅️ Anterior</button>
+                <button onclick="cerrarGaleria()">❌ Cerrar</button>
+                <button onclick="imagenSiguiente()">Siguiente ➡️</button>
             </div>
         </div>
     </div>
 
-    <!-- OTRAS SECCIONES (las mantienes igual) -->
-    <section class="video-section">
-        <!-- Tus videos de YouTube -->
-    </section>
-
+    <!-- FORO PERMANENTE -->
     <section class="forum-section">
-        <!-- Tu foro -->
+        <div class="forum-container">
+            <h2 class="forum-title">🎤 EL TEMPLO - DEBATES HIP HOP</h2>
+            
+            <div class="formulario-foro">
+                <input type="text" id="userName" placeholder="Tu nombre o alias">
+                <textarea id="postText" placeholder="Escribe tu debate sobre hip hop... ¿Qué piensas de la escena actual? ¿Qué letra te marcó?"></textarea>
+                <button class="btn-publicar" onclick="publicarMensaje()">🔥 PUBLICAR EN EL TEMPLO</button>
+            </div>
+            
+            <div id="zonaMensajes" class="zona-mensajes">
+                <!-- Los mensajes aparecen aquí automáticamente -->
+            </div>
+        </div>
     </section>
 
+    <!-- REDES SOCIALES -->
     <section class="links">
-        <!-- Tus redes sociales -->
+        <h2 class="section-title">CONECTA</h2>
+        <div class="social-links">
+            <a href="https://open.spotify.com/intl-es/artist/3j2wcVZAQN4SQ65H7WfOOc" class="social-link" target="_blank">🎵 Spotify</a>
+            <a href="https://www.youtube.com/@Ro-leeMC" class="social-link" target="_blank">📺 YouTube</a>
+            <a href="https://www.tiktok.com/@ro_l33mc" class="social-link" target="_blank">📱 TikTok</a>
+            <a href="https://www.facebook.com/profile.php?id=100086806705791" class="social-link" target="_blank">📘 Facebook</a>
+        </div>
     </section>
 
+    <!-- CONTACTO -->
     <section class="contact">
-        <!-- Tu contacto -->
+        <h2 class="section-title">CONTACTO</h2>
+        <p>Para colaboraciones, bookings y preguntas:</p>
+        <a href="mailto:dsalcedopajoy@gmail.com" class="email-link">dsalcedopajoy@gmail.com</a>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
         <p style="margin-top: 10px; color: #ff5500;">Hip Hop Auténtico - Donde el flow es sagrado</p>
     </footer>
 
+    <!-- JAVASCRIPT -->
     <script>
-        // GALERÍA MEJORADA
-        let imagenesGaleria = [
-            'file:///G:/NORORIENTAL%20FIN/portada.jpeg',
-            'file:///G:/NORORIENTAL%20FIN/contraportada.jpeg'
-        ];
-        
-        let titulosGaleria = [
-            'PORTADA - NORORIENTAL',
-            'CONTRAPORTADA - NORORIENTAL'
-        ];
-        
+        // ===== GALERÍA DE IMÁGENES =====
+        let imagenesGaleria = [];
         let imagenActual = 0;
-        let zoomActivado = false;
+        let titulosGaleria = [];
 
         function abrirGaleria(src, titulo = '') {
+            // CAMBIO AQUÍ: Imágenes locales en el array
+            imagenesGaleria = [
+                'file:///G:/NORORIENTAL%20FIN/portada.jpeg',
+                'file:///G:/NORORIENTAL%20FIN/contraportada.jpeg'
+            ];
+            
+            titulosGaleria = [
+                'Portada - Nororiental',
+                'Contraportada - Nororiental'
+            ];
+            
             imagenActual = imagenesGaleria.indexOf(src);
-            if (imagenActual === -1) imagenActual = 0;
             
-            document.getElementById('imagenAmpliada').src = imagenesGaleria[imagenActual];
+            document.getElementById('imagenAmpliada').src = src;
             document.getElementById('infoImagen').textContent = titulo;
-            actualizarIndicador();
             document.getElementById('galeriaModal').style.display = 'block';
-            zoomActivado = false;
-            document.getElementById('imagenAmpliada').classList.remove('zoom');
             
+            // Cerrar con tecla ESC
             document.addEventListener('keydown', manejarTeclado);
         }
 
@@ -464,42 +662,77 @@
         function actualizarGaleria() {
             document.getElementById('imagenAmpliada').src = imagenesGaleria[imagenActual];
             document.getElementById('infoImagen').textContent = titulosGaleria[imagenActual];
-            actualizarIndicador();
-            zoomActivado = false;
-            document.getElementById('imagenAmpliada').classList.remove('zoom');
-        }
-
-        function actualizarIndicador() {
-            document.getElementById('indicadorImagen').textContent = 
-                `${imagenActual + 1} / ${imagenesGaleria.length}`;
-        }
-
-        function alternarZoom() {
-            zoomActivado = !zoomActivado;
-            document.getElementById('imagenAmpliada').classList.toggle('zoom', zoomActivado);
         }
 
         function manejarTeclado(event) {
             if (event.key === 'Escape') cerrarGaleria();
             if (event.key === 'ArrowRight') imagenSiguiente();
             if (event.key === 'ArrowLeft') imagenAnterior();
-            if (event.key === 'z' || event.key === 'Z') alternarZoom();
         }
 
-        // Zoom al hacer clic
-        document.getElementById('imagenAmpliada').addEventListener('click', function() {
-            alternarZoom();
-        });
-
-        // Cerrar al hacer click fuera
+        // Cerrar modal al hacer click fuera de la imagen
         document.getElementById('galeriaModal').addEventListener('click', function(e) {
             if (e.target === this) cerrarGaleria();
         });
 
-        // Para el foro (lo mantienes igual)
+        // ===== FORO PERMANENTE =====
         function publicarMensaje() {
-            // Tu código del foro...
+            let nombre = document.getElementById('userName').value;
+            let mensaje = document.getElementById('postText').value;
+            
+            if (!nombre || !mensaje) {
+                alert('🎤 ¡Falta información! Escribe tu nombre y mensaje.');
+                return;
+            }
+            
+            let nuevoMensaje = {
+                nombre: nombre,
+                mensaje: mensaje,
+                fecha: new Date().toLocaleString('es-CO', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+            
+            let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
+            mensajesGuardados.push(nuevoMensaje);
+            localStorage.setItem('foroHipHop', JSON.stringify(mensajesGuardados));
+            mostrarMensajes();
+            
+            document.getElementById('userName').value = '';
+            document.getElementById('postText').value = '';
         }
+
+        function mostrarMensajes() {
+            let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
+            let zonaMensajes = document.getElementById('zonaMensajes');
+            
+            zonaMensajes.innerHTML = '';
+            
+            if (mensajesGuardados.length === 0) {
+                zonaMensajes.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">🎤 Sé el primero en debatir sobre hip hop...</p>';
+                return;
+            }
+            
+            mensajesGuardados.reverse().forEach((msg, index) => {
+                let mensajeHTML = `
+                    <div class="mensaje-hiphop">
+                        <strong>${msg.nombre}:</strong>
+                        <p>${msg.mensaje}</p>
+                        <small>📅 ${msg.fecha}</small>
+                    </div>
+                `;
+                zonaMensajes.innerHTML += mensajeHTML;
+            });
+        }
+
+        // Cuando la página cargue, mostrar mensajes existentes
+        document.addEventListener('DOMContentLoaded', function() {
+            mostrarMensajes();
+        });
     </script>
 </body>
 </html>
