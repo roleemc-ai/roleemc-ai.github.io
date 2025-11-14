@@ -299,7 +299,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.95);
+            background-color: rgba(0,0,0,0.98);
             animation: fadeIn 0.3s ease;
         }
 
@@ -312,8 +312,8 @@
             position: relative;
             margin: auto;
             padding: 20px;
-            width: 90%;
-            max-width: 800px;
+            width: 95%;
+            height: 95%;
             top: 50%;
             transform: translateY(-50%);
             text-align: center;
@@ -321,54 +321,64 @@
 
         .imagen-ampliada {
             max-width: 100%;
-            max-height: 70vh;
+            max-height: 85vh;
             border: 3px solid #ff5500;
             border-radius: 10px;
-            box-shadow: 0 0 30px rgba(255, 85, 0, 0.3);
+            box-shadow: 0 0 50px rgba(255, 85, 0, 0.5);
+            object-fit: contain;
         }
 
         .cerrar-modal {
             position: absolute;
-            top: 20px;
-            right: 35px;
+            top: 15px;
+            right: 25px;
             color: #ff5500;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: bold;
             cursor: pointer;
             transition: color 0.3s ease;
+            z-index: 1001;
         }
 
         .cerrar-modal:hover {
             color: #ffaa00;
+            transform: scale(1.1);
         }
 
         .controles-galeria {
-            margin-top: 20px;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            justify-content: center;
             gap: 20px;
+            z-index: 1001;
         }
 
         .controles-galeria button {
-            background: #ff5500;
+            background: rgba(255, 85, 0, 0.9);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: bold;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .controles-galeria button:hover {
             background: #ffaa00;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 170, 0, 0.4);
         }
 
         .info-imagen {
-            color: #ccc;
-            margin-top: 10px;
-            font-size: 0.9rem;
+            color: #ff5500;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
         }
 
         .links {
@@ -473,10 +483,16 @@
             .controles-galeria {
                 flex-direction: column;
                 align-items: center;
+                bottom: 20px;
             }
 
             .modal-contenido {
-                width: 95%;
+                width: 98%;
+                height: 98%;
+            }
+
+            .imagen-ampliada {
+                max-height: 75vh;
             }
         }
     </style>
@@ -486,13 +502,13 @@
     <section class="hero">
         <h1>RO-LEE MC</h1>
         <p class="subtitle">Gestor cultural | Artista</p>
-        <p class="tagline">Hip Hop Auténtico</p>
+        <p class="tagline"> Auténtico</p>
         <a href="#music" class="cta-button">Escucha Mi Música</a>
     </section>
 
     <!-- FILOSOFÍA -->
     <section class="philosophy">
-        <h2 class="section-title">SOY HIPHOP</h2>
+        <h2 class="section-title">YO SOY HIPHOP</h2>
         <div class="philosophy-text">
             <p>"Más que un artista, soy guardián de la esencia. Desde las calles hasta el estudio, mi misión es mantener viva la llama del hip hop auténtico."</p>
             <p style="margin-top: 20px;">Cada ritmo es una ofrenda al flow. Cada letra, un manifiesto de conciencia urbana.</p>
@@ -507,7 +523,7 @@
                 <h3>5TO ELEMENTO</h3>
                 <div class="album-cover">🔥</div>
                 <p class="status">✅ DISPONIBLE</p>
-                <p>Mi EP que redefine los elementos esenciales del hip hop</p>
+                <p>Mi EP que el conocimiento que he adquierido en la vida</p>
                 <p class="production-info">Grabado por KABSTER - MDA</p>
                 <div style="margin-top: 15px;">
                     <a href="https://open.spotify.com/intl-es/album/3JnxnqVXGnDqiZvQowwMcK?si=PxsTQ2uZSICtTBF5RboT6w" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 8px 15px;">🎵 Spotify</a>
@@ -517,17 +533,17 @@
             
             <div class="release-card">
                 <h3>NORORIENTAL</h3>
-                <!-- CAMBIO AQUÍ: Imágenes locales -->
+                <!-- PORTADA CON LINK DIRECTO -->
                 <div class="custom-cover" 
-                     style="background-image: url('file:///G:/NORORIENTAL%20FIN/portada.jpeg');"
-                     onclick="abrirGaleria('file:///G:/NORORIENTAL%20FIN/portada.jpeg', 'Portada - Nororiental')">
+                     style="background-image: url('https://i.ibb.co/DfTdL0VQ/portada.jpg');"
+                     onclick="abrirGaleria('https://i.ibb.co/DfTdL0VQ/portada.jpg', 'Portada - Nororiental')">
                 </div>
                 <p class="soon">🔜 PRÓXIMAMENTE</p>
-                <p>Próxima evolución de mi sonido</p>
-                <!-- CAMBIO AQUÍ: Imágenes locales -->
+                <p>A SOLO UNOS DIAS</p>
+                <!-- CONTRAPORTADA CON LINK DIRECTO -->
                 <div class="custom-cover" 
-                     style="background-image: url('file:///G:/NORORIENTAL%20FIN/contraportada.jpeg'); margin-top: 10px;"
-                     onclick="abrirGaleria('file:///G:/NORORIENTAL%20FIN/contraportada.jpeg', 'Contraportada - Nororiental')">
+                     style="background-image: url('https://i.ibb.co/VcbXKvCc/contraportada.jpg'); margin-top: 10px;"
+                     onclick="abrirGaleria('https://i.ibb.co/VcbXKvCc/contraportada.jpg', 'Contraportada - Nororiental')">
                 </div>
             </div>
         </div>
@@ -623,10 +639,10 @@
         let titulosGaleria = [];
 
         function abrirGaleria(src, titulo = '') {
-            // CAMBIO AQUÍ: Imágenes locales en el array
+            // IMÁGENES CON LINKS DIRECTOS
             imagenesGaleria = [
-                'file:///G:/NORORIENTAL%20FIN/portada.jpeg',
-                'file:///G:/NORORIENTAL%20FIN/contraportada.jpeg'
+                'https://i.ibb.co/DfTdL0VQ/portada.jpg',
+                'https://i.ibb.co/VcbXKvCc/contraportada.jpg'
             ];
             
             titulosGaleria = [
