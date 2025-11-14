@@ -171,18 +171,20 @@
             color: #ff5500;
         }
 
+        /* IMÁGENES MÁS GRANDES */
         .custom-cover {
-            width: 200px;
-            height: 200px;
+            width: 280px;
+            height: 280px;
             margin: 20px auto;
-            border-radius: 10px;
-            border: 2px solid #ff5500;
+            border-radius: 15px;
+            border: 3px solid #ff5500;
             background-size: cover;
             background-position: center;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 25px rgba(255, 85, 0, 0.2);
         }
 
         .custom-cover::after {
@@ -193,8 +195,8 @@
             transform: translate(-50%, -50%) scale(0);
             font-size: 2rem;
             background: rgba(255, 85, 0, 0.9);
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -207,8 +209,8 @@
         }
 
         .custom-cover:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(255, 85, 0, 0.3);
+            transform: scale(1.08);
+            box-shadow: 0 15px 35px rgba(255, 85, 0, 0.4);
         }
 
         .status {
@@ -416,19 +418,20 @@
             border: none;
         }
 
+        /* FORO MEJORADO */
         .forum-section {
             padding: 80px 20px;
             background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
         }
 
         .forum-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: #1a1a1a;
             padding: 40px;
             border-radius: 20px;
             border: 3px solid #ff5500;
-            box-shadow: 0 10px 30px rgba(255, 85, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(255, 85, 0, 0.2);
         }
 
         .forum-title {
@@ -440,6 +443,64 @@
             letter-spacing: 1px;
         }
 
+        .forum-stats {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #2a2a2a;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: #ff5500;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .forum-categories {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 10px 20px;
+            background: #2a2a2a;
+            color: #ccc;
+            border: 1px solid #444;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: #ff5500;
+            color: #000;
+            border-color: #ff5500;
+        }
+
         .formulario-foro {
             background: #2a2a2a;
             padding: 25px;
@@ -449,7 +510,8 @@
         }
 
         .formulario-foro input,
-        .formulario-foro textarea {
+        .formulario-foro textarea,
+        .formulario-foro select {
             width: 100%;
             padding: 15px;
             margin: 10px 0;
@@ -463,7 +525,8 @@
         }
 
         .formulario-foro input:focus,
-        .formulario-foro textarea:focus {
+        .formulario-foro textarea:focus,
+        .formulario-foro select:focus {
             outline: none;
             border-color: #ff5500;
             box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
@@ -486,12 +549,20 @@
             transition: all 0.3s ease;
             font-size: 1rem;
             width: 100%;
+            margin-top: 10px;
         }
 
         .btn-publicar:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(255, 85, 0, 0.4);
             background: linear-gradient(45deg, #ff6600, #ff3300);
+        }
+
+        .char-count {
+            text-align: right;
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: 5px;
         }
 
         .zona-mensajes {
@@ -502,35 +573,83 @@
 
         .mensaje-hiphop {
             background: #2a2a2a;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 10px;
-            border-left: 4px solid #ff5500;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            border-left: 6px solid #ff5500;
             transition: all 0.3s ease;
             position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .mensaje-hiphop:hover {
-            transform: translateX(5px);
+            transform: translateX(8px);
             background: #2d2d2d;
+            box-shadow: 0 8px 25px rgba(255, 85, 0, 0.1);
         }
 
-        .mensaje-hiphop strong {
-            color: #ff5500;
-            font-size: 1.1rem;
+        .mensaje-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
-        .mensaje-hiphop p {
-            margin: 10px 0;
-            color: #e0e0e0;
-            line-height: 1.5;
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .mensaje-hiphop small {
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff5500, #ffaa00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .mensaje-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
             color: #888;
-            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
+        .action-btn:hover {
+            color: #ff5500;
+        }
+
+        .like-btn.liked {
+            color: #ff5500;
+        }
+
+        .empty-forum {
+            text-align: center;
+            color: #888;
+            padding: 40px 20px;
+            font-style: italic;
+            background: #2a2a2a;
+            border-radius: 10px;
+            border: 2px dashed #444;
+        }
+
+        /* GALERÍA MEJORADA */
         .modal-galeria {
             display: none;
             position: fixed;
@@ -541,22 +660,6 @@
             height: 100%;
             background-color: rgba(0,0,0,0.98);
             animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .modal-contenido {
@@ -571,24 +674,13 @@
         }
 
         .imagen-ampliada {
-            max-width: 100%;
-            max-height: 85vh;
-            border: 3px solid #ff5500;
-            border-radius: 15px;
-            box-shadow: 0 0 50px rgba(255, 85, 0, 0.5);
+            max-width: 95%;
+            max-height: 90vh;
+            border: 4px solid #ff5500;
+            border-radius: 20px;
+            box-shadow: 0 0 80px rgba(255, 85, 0, 0.6);
             object-fit: contain;
-            animation: zoomIn 0.3s ease;
-        }
-
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            animation: zoomIn 0.4s ease;
         }
 
         .cerrar-modal {
@@ -651,6 +743,37 @@
             margin-top: 20px;
             font-size: 1.2rem;
             font-weight: bold;
+        }
+
+        /* BOTÓN SCROLL TO TOP */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ff5500;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.4);
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: #ffaa00;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 170, 0, 0.4);
         }
 
         .links {
@@ -747,14 +870,31 @@
             font-style: italic;
         }
 
-        .empty-forum {
-            text-align: center;
-            color: #888;
-            padding: 40px 20px;
-            font-style: italic;
-            background: #2a2a2a;
-            border-radius: 10px;
-            border: 2px dashed #444;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         @media (max-width: 768px) {
@@ -766,6 +906,11 @@
             .release-card {
                 width: 100%;
                 max-width: 350px;
+            }
+            
+            .custom-cover {
+                width: 250px;
+                height: 250px;
             }
             
             .social-links {
@@ -796,6 +941,7 @@
 
             .forum-container {
                 padding: 25px;
+                margin: 20px;
             }
 
             .section-title {
@@ -813,24 +959,32 @@
             .video-vertical {
                 height: 400px;
             }
+
+            .stats-grid {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
         }
 
         .zona-mensajes::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
 
         .zona-mensajes::-webkit-scrollbar-track {
             background: #1a1a1a;
-            border-radius: 4px;
+            border-radius: 5px;
         }
 
         .zona-mensajes::-webkit-scrollbar-thumb {
-            background: #ff5500;
-            border-radius: 4px;
+            background: linear-gradient(45deg, #ff5500, #ffaa00);
+            border-radius: 5px;
         }
 
         .zona-mensajes::-webkit-scrollbar-thumb:hover {
-            background: #ffaa00;
+            background: linear-gradient(45deg, #ff6600, #ffcc00);
         }
     </style>
 </head>
@@ -861,7 +1015,7 @@
                 <h3>5TO ELEMENTO</h3>
                 <div class="album-cover">🔥</div>
                 <p class="status">✅ DISPONIBLE</p>
-                <p>Mi EP les cuenta el conocimiento adquirido y el compromison con el Hiphop</p>
+                <p>Mi EP les cuenta el conocimiento adquirido y el compromiso con el Hiphop</p>
                 <p class="production-info">Grabado por KABSTER - MDA</p>
                 <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
                     <a href="https://open.spotify.com/intl-es/album/3JnxnqVXGnDqiZvQowwMcK?si=PxsTQ2uZSICtTBF5RboT6w" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 10px 15px;">🎵 Spotify</a>
@@ -980,10 +1134,404 @@
             </div>
         </div>
 
-        <!-- CAUSAS QUE APOYAMOS -->
+        <!-- CAUSAS QUE APOYAMOS - ENLACE CORREGIDO -->
         <div class="categoria-producciones">
             <h3 class="categoria-titulo">🏆 CAUSAS QUE APOYAMOS</h3>
             <div class="causas-grid">
                 <div class="causa-item">
                     <h4>DONT STOP</h4>
-                    <a href="https://www.facebook.com/profile.php?id=61563415905664" class
+                    <a href="https://www.facebook.com/profile.php?id=61563415905664" class="causa-link" target="_blank">🌍 Ver Causa</a>
+                </div>
+                <div class="causa-item">
+                    <h4>CAMPAMENTO DEL CONOCIMIENTO HIPHOP</h4>
+                    <a href="https://www.facebook.com/profile.php?id=61582795320984" class="causa-link" target="_blank">🎤 Ver Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="video-section">
+        <h2 class="section-title">VIDEOS</h2>
+        <div class="videos-container">
+            <div class="video-item">
+                <h3 class="video-title">5TO ELEMENTO</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/CLZo4ZOmOWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <h3 class="video-title">TEMA EXCLUSIVO</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/Cnjqg5yLBCY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <h3 class="video-title">COLABORACIÓN CON MENTES NOCTURNAS</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/CItIptojk2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA MODAL -->
+    <div id="galeriaModal" class="modal-galeria">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarGaleria()">&times;</span>
+            <img id="imagenAmpliada" class="imagen-ampliada" src="" alt="Portada ampliada">
+            <div id="infoImagen" class="info-imagen"></div>
+            <div class="controles-galeria">
+                <button onclick="imagenAnterior()">⬅️ Anterior</button>
+                <button onclick="cerrarGaleria()">❌ Cerrar</button>
+                <button onclick="imagenSiguiente()">Siguiente ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORO PERMANENTE MEJORADO -->
+    <section class="forum-section">
+        <div class="forum-container">
+            <h2 class="forum-title">🎤 EL TEMPLO - DEBATES HIP HOP</h2>
+            
+            <!-- ESTADÍSTICAS DEL FORO -->
+            <div class="forum-stats">
+                <h3 style="color: #ff5500; margin-bottom: 15px;">COMUNIDAD ACTIVA</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalMensajes">0</div>
+                        <div class="stat-label">MENSAJES</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalUsuarios">0</div>
+                        <div class="stat-label">USUARIOS</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalLikes">0</div>
+                        <div class="stat-label">LIKES</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORÍAS DE DEBATE -->
+            <div class="forum-categories">
+                <button class="category-btn active" onclick="filtrarMensajes('todos')">🎵 TODOS</button>
+                <button class="category-btn" onclick="filtrarMensajes('musica')">🎤 MÚSICA</button>
+                <button class="category-btn" onclick="filtrarMensajes('letras')">📝 LETRAS</button>
+                <button class="category-btn" onclick="filtrarMensajes('escena')">🏙️ ESCENA</button>
+                <button class="category-btn" onclick="filtrarMensajes('produccion')">🎧 PRODUCCIÓN</button>
+                <button class="category-btn" onclick="filtrarMensajes('freestyle')">🔥 FREESTYLE</button>
+            </div>
+            
+            <!-- FORMULARIO MEJORADO -->
+            <div class="formulario-foro">
+                <input type="text" id="userName" placeholder="🎤 Tu nombre o alias (obligatorio)" maxlength="30">
+                <select id="postCategory">
+                    <option value="musica">🎵 Música</option>
+                    <option value="letras">📝 Letras</option>
+                    <option value="escena">🏙️ Escena</option>
+                    <option value="produccion">🎧 Producción</option>
+                    <option value="freestyle">🔥 Freestyle</option>
+                </select>
+                <textarea id="postText" placeholder="💭 Escribe tu debate sobre hip hop... 
+¿Qué álbum te marcó? 
+¿Qué artista está cambiando el juego? 
+¿Cómo ves la evolución del género?" maxlength="500"></textarea>
+                <div class="char-count" id="charCount">0/500 caracteres</div>
+                <button class="btn-publicar" onclick="publicarMensaje()">
+                    🚀 PUBLICAR EN EL TEMPLO
+                </button>
+            </div>
+            
+            <!-- ZONA DE MENSAJES MEJORADA -->
+            <div id="zonaMensajes" class="zona-mensajes">
+                <!-- Los mensajes aparecen aquí automáticamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- REDES SOCIALES -->
+    <section class="links">
+        <h2 class="section-title">CONECTA</h2>
+        <div class="social-links">
+            <a href="https://open.spotify.com/intl-es/artist/3j2wcVZAQN4SQ65H7WfOOc" class="social-link" target="_blank">🎵 Spotify</a>
+            <a href="https://www.youtube.com/@Ro-leeMC" class="social-link" target="_blank">📺 YouTube</a>
+            <a href="https://www.tiktok.com/@ro_l33mc" class="social-link" target="_blank">📱 TikTok</a>
+            <a href="https://www.facebook.com/profile.php?id=100086806705791" class="social-link" target="_blank">📘 Facebook</a>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact">
+        <h2 class="section-title">CONTACTO</h2>
+        <p style="margin-bottom: 20px; font-size: 1.1rem;">Para colaboraciones, bookings y preguntas:</p>
+        <a href="mailto:dsalcedopajoy@gmail.com" class="email-link">dsalcedopajoy@gmail.com</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
+        <p style="margin-top: 15px; color: #ff5500; font-size: 1.1rem;">yosoy hiphop - Donde el flow es sagrado</p>
+    </footer>
+
+    <!-- BOTÓN SCROLL TO TOP -->
+    <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ===== SISTEMA DE FORO MEJORADO =====
+        let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
+        let filtroActual = 'todos';
+
+        function publicarMensaje() {
+            let nombre = document.getElementById('userName').value.trim();
+            let mensaje = document.getElementById('postText').value.trim();
+            let categoria = document.getElementById('postCategory').value;
+            
+            if (!nombre || !mensaje) {
+                alert('🎤 ¡Falta información! Completa tu nombre y mensaje.');
+                return;
+            }
+            
+            if (mensaje.length < 10) {
+                alert('💭 ¡El mensaje es muy corto! Escribe al menos 10 caracteres.');
+                return;
+            }
+            
+            let nuevoMensaje = {
+                id: Date.now(),
+                nombre: nombre,
+                mensaje: mensaje,
+                categoria: categoria,
+                fecha: new Date().toLocaleString('es-CO', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }),
+                likes: 0,
+                liked: false
+            };
+            
+            mensajesGuardados.push(nuevoMensaje);
+            localStorage.setItem('foroHipHop', JSON.stringify(mensajesGuardados));
+            mostrarMensajes();
+            actualizarEstadisticas();
+            
+            // Limpiar formulario
+            document.getElementById('postText').value = '';
+            actualizarContadorCaracteres();
+        }
+
+        function mostrarMensajes() {
+            let mensajesFiltrados = filtroActual === 'todos' 
+                ? mensajesGuardados 
+                : mensajesGuardados.filter(msg => msg.categoria === filtroActual);
+            
+            let zonaMensajes = document.getElementById('zonaMensajes');
+            
+            zonaMensajes.innerHTML = '';
+            
+            if (mensajesFiltrados.length === 0) {
+                zonaMensajes.innerHTML = `
+                    <div class="empty-forum">
+                        <p style="font-size: 1.3rem; margin-bottom: 15px; color: #ff5500;">🎤 EL TEMPLO ESTÁ VACÍO</p>
+                        <p style="font-size: 1.1rem;">Sé el primero en debatir sobre hip hop auténtico...</p>
+                        <p style="margin-top: 10px; color: #888;">💡 Comparte tu opinión sobre álbumes, artistas, o la escena local</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            mensajesFiltrados.reverse().forEach((msg, index) => {
+                let avatarText = msg.nombre.charAt(0).toUpperCase();
+                let categoriaIcon = {
+                    'musica': '🎵',
+                    'letras': '📝',
+                    'escena': '🏙️',
+                    'produccion': '🎧',
+                    'freestyle': '🔥'
+                }[msg.categoria] || '💬';
+                
+                let mensajeHTML = `
+                    <div class="mensaje-hiphop" data-category="${msg.categoria}">
+                        <div class="mensaje-header">
+                            <div class="user-info">
+                                <div class="user-avatar">${avatarText}</div>
+                                <div>
+                                    <strong style="color: #ff5500;">${msg.nombre}</strong>
+                                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 5px;">
+                                        <small style="color: #888;">📅 ${msg.fecha}</small>
+                                        <span style="background: #333; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem;">
+                                            ${categoriaIcon} ${msg.categoria.toUpperCase()}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="margin: 15px 0; color: #e0e0e0; line-height: 1.6; font-size: 1.05rem;">${msg.mensaje}</p>
+                        <div class="mensaje-actions">
+                            <button class="action-btn like-btn ${msg.liked ? 'liked' : ''}" onclick="darLike(${msg.id})">
+                                👍 <span id="likes-${msg.id}">${msg.likes}</span>
+                            </button>
+                            <button class="action-btn" onclick="compartirMensaje(${msg.id})">
+                                🔄 Compartir
+                            </button>
+                        </div>
+                    </div>
+                `;
+                zonaMensajes.innerHTML += mensajeHTML;
+            });
+        }
+
+        function filtrarMensajes(categoria) {
+            filtroActual = categoria;
+            
+            // Actualizar botones activos
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            mostrarMensajes();
+        }
+
+        function darLike(mensajeId) {
+            let mensajeIndex = mensajesGuardados.findIndex(msg => msg.id === mensajeId);
+            if (mensajeIndex !== -1) {
+                if (!mensajesGuardados[mensajeIndex].liked) {
+                    mensajesGuardados[mensajeIndex].likes++;
+                    mensajesGuardados[mensajeIndex].liked = true;
+                } else {
+                    mensajesGuardados[mensajeIndex].likes--;
+                    mensajesGuardados[mensajeIndex].liked = false;
+                }
+                
+                localStorage.setItem('foroHipHop', JSON.stringify(mensajesGuardados));
+                mostrarMensajes();
+                actualizarEstadisticas();
+            }
+        }
+
+        function compartirMensaje(mensajeId) {
+            let mensaje = mensajesGuardados.find(msg => msg.id === mensajeId);
+            if (mensaje) {
+                let textoCompartir = `"${mensaje.mensaje}" - ${mensaje.nombre} (EL TEMPLO HIP HOP)`;
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Debate Hip Hop - EL TEMPLO',
+                        text: textoCompartir,
+                        url: window.location.href
+                    });
+                } else {
+                    // Fallback para navegadores que no soportan Web Share API
+                    alert('📢 Mensaje copiado para compartir:\n\n' + textoCompartir);
+                }
+            }
+        }
+
+        function actualizarEstadisticas() {
+            let totalMensajes = mensajesGuardados.length;
+            let totalUsuarios = new Set(mensajesGuardados.map(msg => msg.nombre)).size;
+            let totalLikes = mensajesGuardados.reduce((sum, msg) => sum + msg.likes, 0);
+            
+            document.getElementById('totalMensajes').textContent = totalMensajes;
+            document.getElementById('totalUsuarios').textContent = totalUsuarios;
+            document.getElementById('totalLikes').textContent = totalLikes;
+        }
+
+        function actualizarContadorCaracteres() {
+            let textarea = document.getElementById('postText');
+            let charCount = document.getElementById('charCount');
+            charCount.textContent = `${textarea.value.length}/500 caracteres`;
+            
+            if (textarea.value.length > 450) {
+                charCount.style.color = '#ff5500';
+            } else {
+                charCount.style.color = '#888';
+            }
+        }
+
+        // ===== SCROLL TO TOP =====
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', function() {
+            let scrollBtn = document.querySelector('.scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        // ===== GALERÍA DE IMÁGENES =====
+        let imagenesGaleria = [];
+        let imagenActual = 0;
+        let titulosGaleria = [];
+
+        function abrirGaleria(src, titulo = '') {
+            imagenesGaleria = [
+                'https://i.ibb.co/DfTdL0VQ/portada.jpg',
+                'https://i.ibb.co/VcbXKvCc/contraportada.jpg'
+            ];
+            
+            titulosGaleria = [
+                'Portada - Nororiental',
+                'Contraportada - Nororiental'
+            ];
+            
+            imagenActual = imagenesGaleria.indexOf(src);
+            
+            document.getElementById('imagenAmpliada').src = src;
+            document.getElementById('infoImagen').textContent = titulo;
+            document.getElementById('galeriaModal').style.display = 'block';
+            
+            document.addEventListener('keydown', manejarTeclado);
+        }
+
+        function cerrarGaleria() {
+            document.getElementById('galeriaModal').style.display = 'none';
+            document.removeEventListener('keydown', manejarTeclado);
+        }
+
+        function imagenSiguiente() {
+            imagenActual = (imagenActual + 1) % imagenesGaleria.length;
+            actualizarGaleria();
+        }
+
+        function imagenAnterior() {
+            imagenActual = (imagenActual - 1 + imagenesGaleria.length) % imagenesGaleria.length;
+            actualizarGaleria();
+        }
+
+        function actualizarGaleria() {
+            document.getElementById('imagenAmpliada').src = imagenesGaleria[imagenActual];
+            document.getElementById('infoImagen').textContent = titulosGaleria[imagenActual];
+        }
+
+        function manejarTeclado(event) {
+            if (event.key === 'Escape') cerrarGaleria();
+            if (event.key === 'ArrowRight') imagenSiguiente();
+            if (event.key === 'ArrowLeft') imagenAnterior();
+        }
+
+        document.getElementById('galeriaModal').addEventListener('click', function(e) {
+            if (e.target === this) cerrarGaleria();
+        });
+
+        // ===== INICIALIZACIÓN =====
+        document.addEventListener('DOMContentLoaded', function() {
+            mostrarMensajes();
+            actualizarEstadisticas();
+            
+            // Contador de caracteres en tiempo real
+            document.getElementById('postText').addEventListener('input', actualizarContadorCaracteres);
+        });
+    </script>
+</body>
+</html>
