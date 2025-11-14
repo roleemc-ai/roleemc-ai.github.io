@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RO-LEE MC |YO SOY HIPHOP</title>
+    <title>RO-LEE MC | ROLEMUSCIK FLICK</title>
     <style>
         * {
             margin: 0;
@@ -223,6 +223,144 @@
             font-weight: bold;
             margin: 10px 0;
             font-size: 1.1rem;
+        }
+
+        /* NUEVA SECCIÓN: ROLEMUSCIK FLICK */
+        .rolemuscik-section {
+            padding: 80px 20px;
+            background: linear-gradient(45deg, #0a0a0a, #151515);
+        }
+
+        .categoria-producciones {
+            margin-bottom: 60px;
+        }
+
+        .categoria-titulo {
+            font-size: 2rem;
+            color: #ff5500;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .categoria-titulo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff5500, #ffaa00);
+            border-radius: 2px;
+        }
+
+        .producciones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .produccion-item {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .produccion-item:hover {
+            border-color: #ff5500;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 85, 0, 0.2);
+        }
+
+        .produccion-titulo {
+            color: #ff5500;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .video-vertical {
+            height: 476px;
+        }
+
+        .produccion-desc {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .youtube-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .youtube-link:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        .causas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .causa-item {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .causa-item:hover {
+            border-color: #ff5500;
+            transform: translateY(-3px);
+        }
+
+        .causa-link {
+            color: #ff5500;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .causa-link:hover {
+            color: #ffaa00;
+            text-decoration: underline;
         }
 
         .video-section {
@@ -663,9 +801,20 @@
             .section-title {
                 font-size: 2rem;
             }
+
+            .producciones-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-container iframe {
+                height: 250px;
+            }
+
+            .video-vertical {
+                height: 400px;
+            }
         }
 
-        /* Scroll personalizado */
         .zona-mensajes::-webkit-scrollbar {
             width: 8px;
         }
@@ -690,15 +839,15 @@
     <section class="hero">
         <h1>RO-LEE MC</h1>
         <p class="subtitle">Gestor cultural | Artista</p>
-        <p class="tagline">yosoy hiphop</p>
+        <p class="tagline">ROLEMUSCIK FLICK</p>
         <a href="#music" class="cta-button">Escucha Mi Música</a>
     </section>
 
     <!-- FILOSOFÍA -->
     <section class="philosophy">
-        <h2 class="section-title">YO SOY HIPHOP</h2>
+        <h2 class="section-title">yosoy hiphop</h2>
         <div class="philosophy-text">
-            <p>"Más que un artista, soy guardián de la esencia. Desde las calles hasta el estudio, mi misión es mantener viva la llama del Hiphop auténtico."</p>
+            <p>"Más que un artista, soy guardián de la esencia. Desde las calles hasta el estudio, mi misión es mantener viva la llama del hip hop auténtico."</p>
             <p>"Cada ritmo es una ofrenda al flow. Cada letra, un manifiesto de conciencia urbana."</p>
             <p>"En un mundo de modas pasajeras, construyo cimientos. Mi música es el puente entre el boom bap y la evolución del sonido urbano."</p>
         </div>
@@ -712,7 +861,7 @@
                 <h3>5TO ELEMENTO</h3>
                 <div class="album-cover">🔥</div>
                 <p class="status">✅ DISPONIBLE</p>
-                <p>Mi EP que demuestra el conocimiento adquirido en lka vida y en HIPHOP</p>
+                <p>Mi EP que redefine los elementos esenciales del hip hop</p>
                 <p class="production-info">Grabado por KABSTER - MDA</p>
                 <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
                     <a href="https://open.spotify.com/intl-es/album/3JnxnqVXGnDqiZvQowwMcK?si=PxsTQ2uZSICtTBF5RboT6w" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 10px 15px;">🎵 Spotify</a>
@@ -727,7 +876,7 @@
                      onclick="abrirGaleria('https://i.ibb.co/DfTdL0VQ/portada.jpg', 'Portada - Nororiental')">
                 </div>
                 <p class="soon">🔜 PRÓXIMAMENTE</p>
-                <p>Próxima evolución de sonido</p>
+                <p>Próxima evolución de mi sonido</p>
                 <div class="custom-cover" 
                      style="background-image: url('https://i.ibb.co/VcbXKvCc/contraportada.jpg'); margin-top: 15px;"
                      onclick="abrirGaleria('https://i.ibb.co/VcbXKvCc/contraportada.jpg', 'Contraportada - Nororiental')">
@@ -736,207 +885,105 @@
         </div>
     </section>
 
-    <!-- VIDEOS -->
-    <section class="video-section">
-        <h2 class="section-title">VIDEOS</h2>
-        <div class="videos-container">
-            <div class="video-item">
-                <h3 class="video-title">CAMBIO DE ACONTECIMIENTO DE 5TO ELEMENTO</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/CLZo4ZOmOWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            
-            <div class="video-item">
-                <h3 class="video-title">SENTIMIENTOS REPRIMIDOS DE TRUE(PROXIMAMENTE ALBUM)</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/Cnjqg5yLBCY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            
-            <div class="video-item">
-                <h3 class="video-title">COLABORACIÓN CON MENTES NOCTURNAS-ESCAPO DE NORORIENTAL</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/CItIptojk2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- GALERÍA MODAL -->
-    <div id="galeriaModal" class="modal-galeria">
-        <div class="modal-contenido">
-            <span class="cerrar-modal" onclick="cerrarGaleria()">&times;</span>
-            <img id="imagenAmpliada" class="imagen-ampliada" src="" alt="Portada ampliada">
-            <div id="infoImagen" class="info-imagen"></div>
-            <div class="controles-galeria">
-                <button onclick="imagenAnterior()">⬅️ Anterior</button>
-                <button onclick="cerrarGaleria()">❌ Cerrar</button>
-                <button onclick="imagenSiguiente()">Siguiente ➡️</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- FORO PERMANENTE -->
-    <section class="forum-section">
-        <div class="forum-container">
-            <h2 class="forum-title">🎤 EL TEMPLO - DEBATES HIP HOP</h2>
-            
-            <div class="formulario-foro">
-                <input type="text" id="userName" placeholder="Tu nombre o alias">
-                <textarea id="postText" placeholder="Escribe tu debate sobre hip hop... ¿Qué piensas de la escena actual? ¿Qué letra te marcó?"></textarea>
-                <button class="btn-publicar" onclick="publicarMensaje()">🔥 PUBLICAR EN EL TEMPLO</button>
-            </div>
-            
-            <div id="zonaMensajes" class="zona-mensajes">
-                <!-- Los mensajes aparecen aquí automáticamente -->
-            </div>
-        </div>
-    </section>
-
-    <!-- REDES SOCIALES -->
-    <section class="links">
-        <h2 class="section-title">CONECTA</h2>
-        <div class="social-links">
-            <a href="https://open.spotify.com/intl-es/artist/3j2wcVZAQN4SQ65H7WfOOc" class="social-link" target="_blank">🎵 Spotify</a>
-            <a href="https://www.youtube.com/@Ro-leeMC" class="social-link" target="_blank">📺 YouTube</a>
-            <a href="https://www.tiktok.com/@ro_l33mc" class="social-link" target="_blank">📱 TikTok</a>
-            <a href="https://www.facebook.com/profile.php?id=100086806705791" class="social-link" target="_blank">📘 Facebook</a>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section class="contact">
-        <h2 class="section-title">CONTACTO</h2>
-        <p style="margin-bottom: 20px; font-size: 1.1rem;">Para colaboraciones, bookings y preguntas:</p>
-        <a href="mailto:dsalcedopajoy@gmail.com" class="email-link">dsalcedopajoy@gmail.com</a>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
-        <p style="margin-top: 15px; color: #ff5500; font-size: 1.1rem;">yosoy hiphop - Donde el flow es sagrado</p>
-    </footer>
-
-    <!-- JAVASCRIPT -->
-    <script>
-        // ===== GALERÍA DE IMÁGENES =====
-        let imagenesGaleria = [];
-        let imagenActual = 0;
-        let titulosGaleria = [];
-
-        function abrirGaleria(src, titulo = '') {
-            imagenesGaleria = [
-                'https://i.ibb.co/DfTdL0VQ/portada.jpg',
-                'https://i.ibb.co/VcbXKvCc/contraportada.jpg'
-            ];
-            
-            titulosGaleria = [
-                'Portada - Nororiental',
-                'Contraportada - Nororiental'
-            ];
-            
-            imagenActual = imagenesGaleria.indexOf(src);
-            
-            document.getElementById('imagenAmpliada').src = src;
-            document.getElementById('infoImagen').textContent = titulo;
-            document.getElementById('galeriaModal').style.display = 'block';
-            
-            document.addEventListener('keydown', manejarTeclado);
-        }
-
-        function cerrarGaleria() {
-            document.getElementById('galeriaModal').style.display = 'none';
-            document.removeEventListener('keydown', manejarTeclado);
-        }
-
-        function imagenSiguiente() {
-            imagenActual = (imagenActual + 1) % imagenesGaleria.length;
-            actualizarGaleria();
-        }
-
-        function imagenAnterior() {
-            imagenActual = (imagenActual - 1 + imagenesGaleria.length) % imagenesGaleria.length;
-            actualizarGaleria();
-        }
-
-        function actualizarGaleria() {
-            document.getElementById('imagenAmpliada').src = imagenesGaleria[imagenActual];
-            document.getElementById('infoImagen').textContent = titulosGaleria[imagenActual];
-        }
-
-        function manejarTeclado(event) {
-            if (event.key === 'Escape') cerrarGaleria();
-            if (event.key === 'ArrowRight') imagenSiguiente();
-            if (event.key === 'ArrowLeft') imagenAnterior();
-        }
-
-        document.getElementById('galeriaModal').addEventListener('click', function(e) {
-            if (e.target === this) cerrarGaleria();
-        });
-
-        // ===== FORO PERMANENTE =====
-        function publicarMensaje() {
-            let nombre = document.getElementById('userName').value;
-            let mensaje = document.getElementById('postText').value;
-            
-            if (!nombre || !mensaje) {
-                alert('🎤 ¡Falta información! Escribe tu nombre y mensaje.');
-                return;
-            }
-            
-            let nuevoMensaje = {
-                nombre: nombre,
-                mensaje: mensaje,
-                fecha: new Date().toLocaleString('es-CO', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                })
-            };
-            
-            let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
-            mensajesGuardados.push(nuevoMensaje);
-            localStorage.setItem('foroHipHop', JSON.stringify(mensajesGuardados));
-            mostrarMensajes();
-            
-            document.getElementById('userName').value = '';
-            document.getElementById('postText').value = '';
-        }
-
-        function mostrarMensajes() {
-            let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
-            let zonaMensajes = document.getElementById('zonaMensajes');
-            
-            zonaMensajes.innerHTML = '';
-            
-            if (mensajesGuardados.length === 0) {
-                zonaMensajes.innerHTML = `
-                    <div class="empty-forum">
-                        <p style="font-size: 1.2rem; margin-bottom: 10px;">🎤 EL TEMPLO ESTÁ VACÍO</p>
-                        <p>Sé el primero en debatir sobre hip hop auténtico...</p>
+    <!-- NUEVA SECCIÓN: ROLEMUSCIK FLICK -->
+    <section class="rolemuscik-section">
+        <h2 class="section-title">ROLEMUSCIK FLICK</h2>
+        
+        <!-- PRODUCCIONES MUSICALES -->
+        <div class="categoria-producciones">
+            <h3 class="categoria-titulo">🎬 PRODUCCIONES MUSICALES</h3>
+            <div class="producciones-grid">
+                <div class="produccion-item">
+                    <h4 class="produccion-titulo">JAMES Z1</h4>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bxkq8W6_-hw" frameborder="0" allowfullscreen></iframe>
                     </div>
-                `;
-                return;
-            }
-            
-            mensajesGuardados.reverse().forEach((msg, index) => {
-                let mensajeHTML = `
-                    <div class="mensaje-hiphop">
-                        <strong>${msg.nombre}:</strong>
-                        <p>${msg.mensaje}</p>
-                        <small>📅 ${msg.fecha}</small>
+                    <p class="produccion-desc">Producción completa por ROLEMUSCIK FLICK</p>
+                </div>
+                
+                <div class="produccion-item">
+                    <h4 class="produccion-titulo">ZATTY ZTAYLA</h4>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/CXz-z69sPO4" frameborder="0" allowfullscreen></iframe>
                     </div>
-                `;
-                zonaMensajes.innerHTML += mensajeHTML;
-            });
-        }
+                    <p class="produccion-desc">Documental - Producción ROLEMUSCIK FLICK</p>
+                </div>
+                
+                <div class="produccion-item">
+                    <h4 class="produccion-titulo">AQ3 - REALEZA INFERIOR</h4>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/s-ApCIVU19I" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <p class="produccion-desc">PULSO - ROLEMUSCIK FLICK</p>
+                </div>
+            </div>
+        </div>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            mostrarMensajes();
-        });
-    </script>
-</body>
-</html>
+        <!-- VIDEOS EXCLUSIVOS FACEBOOK -->
+        <div class="categoria-producciones">
+            <h3 class="categoria-titulo">📱 CONTENIDO EXCLUSIVO</h3>
+            <div class="producciones-grid">
+                <div class="produccion-item">
+                    <h4 class="produccion-titulo">PRODUCCIÓN ROLEMUSCIK FLICK</h4>
+                    <div class="video-container">
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F112696424237427%2Fvideos%2F511217193763579%2F&show_text=false&width=560&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                    </div>
+                    <p class="produccion-desc">Video creado en ROLEMUSCIK FLICK</p>
+                </div>
+                
+                <div class="produccion-item">
+                    <h4 class="produccion-titulo">NORORIENTAL PROXIMAMENTE</h4>
+                    <div class="video-container">
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1240394830798395%2F&show_text=false&width=560&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                    </div>
+                    <p class="produccion-desc">Con MENTES NOCTURNAS - ROLEMUSCIK FLICK</p>
+                </div>
+                
+                <div class="produccion-item">
+                    <h4 class="produccion-titulo">VOLVIENDO A CLASES</h4>
+                    <div class="video-container video-vertical">
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3820091531653733%2F&show_text=false&width=267&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                    </div>
+                    <p class="produccion-desc">Segunda versión - Impacto social</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLABORACIONES -->
+        <div class="categoria-producciones">
+            <h3 class="categoria-titulo">🤝 COLABORACIONES</h3>
+            <div class="producciones-grid">
+                <div class="produccion-item">
+                    <h4 class="produccion-titulo">MENTES NOCTURNAS & MILLER JOYA</h4>
+                    <div class="video-container video-vertical">
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F944240340136669%2F&show_text=false&width=267&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                    </div>
+                    <p class="produccion-desc">Canción: ANSIEDAD</p>
+                    <a href="https://www.youtube.com/watch?v=dvs1-Ou-Ypc" class="youtube-link" target="_blank">🎵 Ver completo en YouTube</a>
+                </div>
+                
+                <div class="produccion-item">
+                    <h4 class="produccion-titulo">HIP HOP AL PARQUE 2022</h4>
+                    <div class="video-container">
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F100086806705791%2Fvideos%2F282307080974053%2F&show_text=false&width=560&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                    </div>
+                    <p class="produccion-desc">Participación en festival</p>
+                </div>
+                
+                <div class="produccion-item">
+                    <h4 class="produccion-titulo">MENTES NOCTURNAS - FIGURAS DE PAPEL</h4>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/ExNRr1Uw-yE" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <p class="produccion-desc">Producción ROLEMUSCIK FLICK</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CAUSAS QUE APOYAMOS -->
+        <div class="categoria-producciones">
+            <h3 class="categoria-titulo">🏆 CAUSAS QUE APOYAMOS</h3>
+            <div class="causas-grid">
+                <div class="causa-item">
+                    <h4>DONT STOP</h4>
+                    <a href="https://www.facebook.com/profile.php?id=61563415905664" class
