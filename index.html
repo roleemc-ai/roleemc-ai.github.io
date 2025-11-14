@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RO-LEE MC |Auténtico</title>
+    <title>RO-LEE MC | yosoy hiphop</title>
     <style>
         * {
             margin: 0;
@@ -16,10 +16,11 @@
             background-color: #0a0a0a;
             color: #fff;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
                         url('https://i.ibb.co/2YSq6SWb/IMG-20241031-215343-865.jpg') 
                         no-repeat center center/cover;
             height: 100vh;
@@ -29,6 +30,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            position: relative;
         }
 
         .hero h1 {
@@ -40,12 +42,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 30px rgba(255, 85, 0, 0.5);
+            animation: fadeInUp 1s ease;
         }
 
         .hero .subtitle {
             font-size: clamp(1.2rem, 3vw, 1.5rem);
             margin-top: 20px;
             color: #ccc;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
         .tagline {
@@ -53,6 +57,7 @@
             margin-top: 10px;
             color: #ff5500;
             font-style: italic;
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
         .cta-button {
@@ -69,6 +74,7 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3);
+            animation: fadeInUp 1s ease 0.6s both;
         }
 
         .cta-button:hover {
@@ -88,6 +94,19 @@
             color: #ff5500;
             text-transform: uppercase;
             letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff5500, #ffaa00);
+            border-radius: 2px;
         }
 
         .releases {
@@ -102,16 +121,34 @@
         .release-card {
             background: #1a1a1a;
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
             width: 300px;
             border: 2px solid #333;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .release-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 85, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .release-card:hover::before {
+            left: 100%;
         }
 
         .release-card:hover {
             border-color: #ff5500;
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 85, 0, 0.2);
         }
 
         .release-card h3 {
@@ -142,28 +179,54 @@
             border: 2px solid #ff5500;
             background-size: cover;
             background-position: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-cover::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 2rem;
+            background: rgba(255, 85, 0, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .custom-cover:hover::after {
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .custom-cover:hover {
             transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 85, 0, 0.3);
         }
 
         .status {
             color: #00ff00;
             font-weight: bold;
             margin: 10px 0;
+            font-size: 1.1rem;
         }
 
         .soon {
             color: #ffaa00;
             font-weight: bold;
             margin: 10px 0;
+            font-size: 1.1rem;
         }
 
         .video-section {
-            padding: 60px 20px;
+            padding: 80px 20px;
             background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
         }
 
@@ -177,16 +240,24 @@
 
         .video-item {
             background: #1a1a1a;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 15px;
             border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .video-item:hover {
+            border-color: #ff5500;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 85, 0, 0.2);
         }
 
         .video-title {
             color: #ff5500;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            font-weight: bold;
         }
 
         .video-wrapper {
@@ -194,6 +265,8 @@
             width: 100%;
             height: 0;
             padding-bottom: 56.25%;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         .video-wrapper iframe {
@@ -202,10 +275,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 5px;
+            border: none;
         }
 
-        /* ESTILOS NUEVOS PARA EL FORO */
         .forum-section {
             padding: 80px 20px;
             background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
@@ -215,39 +287,52 @@
             max-width: 800px;
             margin: 0 auto;
             background: #1a1a1a;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 20px;
             border: 3px solid #ff5500;
+            box-shadow: 0 10px 30px rgba(255, 85, 0, 0.1);
         }
 
         .forum-title {
             text-align: center;
             color: #ff5500;
             margin-bottom: 30px;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .formulario-foro {
             background: #2a2a2a;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 15px;
             margin-bottom: 30px;
+            border: 1px solid #333;
         }
 
         .formulario-foro input,
         .formulario-foro textarea {
             width: 100%;
-            padding: 12px;
-            margin: 8px 0;
+            padding: 15px;
+            margin: 10px 0;
             background: #1a1a1a;
             border: 1px solid #444;
-            border-radius: 5px;
+            border-radius: 8px;
             color: white;
             font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .formulario-foro input:focus,
+        .formulario-foro textarea:focus {
+            outline: none;
+            border-color: #ff5500;
+            box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
         }
 
         .formulario-foro textarea {
-            height: 100px;
+            height: 120px;
             resize: vertical;
         }
 
@@ -255,34 +340,52 @@
             background: linear-gradient(45deg, #ff5500, #e04a00);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: 15px 30px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            font-size: 1rem;
+            width: 100%;
         }
 
         .btn-publicar:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 85, 0, 0.4);
+            background: linear-gradient(45deg, #ff6600, #ff3300);
         }
 
         .zona-mensajes {
             max-height: 500px;
             overflow-y: auto;
+            padding: 10px;
         }
 
         .mensaje-hiphop {
             background: #2a2a2a;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
             border-left: 4px solid #ff5500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .mensaje-hiphop:hover {
+            transform: translateX(5px);
+            background: #2d2d2d;
         }
 
         .mensaje-hiphop strong {
             color: #ff5500;
+            font-size: 1.1rem;
+        }
+
+        .mensaje-hiphop p {
+            margin: 10px 0;
+            color: #e0e0e0;
+            line-height: 1.5;
         }
 
         .mensaje-hiphop small {
@@ -290,7 +393,6 @@
             font-size: 0.8rem;
         }
 
-        /* GALERÍA MODAL */
         .modal-galeria {
             display: none;
             position: fixed;
@@ -308,6 +410,17 @@
             to { opacity: 1; }
         }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .modal-contenido {
             position: relative;
             margin: auto;
@@ -323,31 +436,51 @@
             max-width: 100%;
             max-height: 85vh;
             border: 3px solid #ff5500;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 0 50px rgba(255, 85, 0, 0.5);
             object-fit: contain;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .cerrar-modal {
             position: absolute;
-            top: 15px;
-            right: 25px;
+            top: 20px;
+            right: 30px;
             color: #ff5500;
             font-size: 50px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             z-index: 1001;
+            background: rgba(0,0,0,0.7);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cerrar-modal:hover {
             color: #ffaa00;
             transform: scale(1.1);
+            background: rgba(255, 85, 0, 0.2);
         }
 
         .controles-galeria {
             position: fixed;
-            bottom: 30px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -359,30 +492,31 @@
             background: rgba(255, 85, 0, 0.9);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
+            padding: 15px 25px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            min-width: 120px;
         }
 
         .controles-galeria button:hover {
             background: #ffaa00;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 170, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(255, 170, 0, 0.4);
         }
 
         .info-imagen {
             color: #ff5500;
-            margin-top: 15px;
-            font-size: 1.1rem;
+            margin-top: 20px;
+            font-size: 1.2rem;
             font-weight: bold;
         }
 
         .links {
-            padding: 60px 20px;
+            padding: 80px 20px;
             background-color: #0a0a0a;
             text-align: center;
         }
@@ -390,31 +524,34 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
             margin-top: 30px;
         }
 
         .social-link {
             display: inline-block;
-            padding: 12px 25px;
+            padding: 15px 30px;
             background: #1a1a1a;
             color: #ff5500;
             text-decoration: none;
-            border-radius: 5px;
-            border: 1px solid #333;
+            border-radius: 10px;
+            border: 2px solid #333;
             transition: all 0.3s ease;
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
         .social-link:hover {
             background: #ff5500;
             color: #000;
-            transform: translateY(-2px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 85, 0, 0.3);
+            border-color: #ff5500;
         }
 
         .contact {
-            padding: 40px 20px;
+            padding: 60px 20px;
             background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
             text-align: center;
         }
@@ -422,16 +559,24 @@
         .email-link {
             color: #ff5500;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: rgba(255, 85, 0, 0.1);
         }
 
         .email-link:hover {
+            color: #ffaa00;
             text-decoration: underline;
+            background: rgba(255, 85, 0, 0.2);
+            transform: translateY(-2px);
         }
 
         footer {
-            padding: 30px 20px;
+            padding: 40px 20px;
             background-color: #000;
             text-align: center;
             color: #666;
@@ -439,7 +584,7 @@
         }
 
         .philosophy {
-            padding: 60px 20px;
+            padding: 80px 20px;
             background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
             text-align: center;
         }
@@ -447,16 +592,31 @@
         .philosophy-text {
             max-width: 800px;
             margin: 0 auto;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.8;
             color: #ccc;
         }
 
+        .philosophy-text p {
+            margin-bottom: 25px;
+            animation: fadeInUp 1s ease;
+        }
+
         .production-info {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #888;
-            margin-top: 10px;
+            margin-top: 15px;
             font-style: italic;
+        }
+
+        .empty-forum {
+            text-align: center;
+            color: #888;
+            padding: 40px 20px;
+            font-style: italic;
+            background: #2a2a2a;
+            border-radius: 10px;
+            border: 2px dashed #444;
         }
 
         @media (max-width: 768px) {
@@ -467,7 +627,7 @@
             
             .release-card {
                 width: 100%;
-                max-width: 300px;
+                max-width: 350px;
             }
             
             .social-links {
@@ -476,7 +636,7 @@
             }
             
             .social-link {
-                width: 200px;
+                width: 250px;
                 text-align: center;
             }
 
@@ -484,6 +644,7 @@
                 flex-direction: column;
                 align-items: center;
                 bottom: 20px;
+                gap: 10px;
             }
 
             .modal-contenido {
@@ -492,8 +653,35 @@
             }
 
             .imagen-ampliada {
-                max-height: 75vh;
+                max-height: 70vh;
             }
+
+            .forum-container {
+                padding: 25px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll personalizado */
+        .zona-mensajes::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .zona-mensajes::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 4px;
+        }
+
+        .zona-mensajes::-webkit-scrollbar-thumb {
+            background: #ff5500;
+            border-radius: 4px;
+        }
+
+        .zona-mensajes::-webkit-scrollbar-thumb:hover {
+            background: #ffaa00;
         }
     </style>
 </head>
@@ -502,16 +690,17 @@
     <section class="hero">
         <h1>RO-LEE MC</h1>
         <p class="subtitle">Gestor cultural | Artista</p>
-        <p class="tagline"> Auténtico</p>
+        <p class="tagline">yosoy hiphop</p>
         <a href="#music" class="cta-button">Escucha Mi Música</a>
     </section>
 
     <!-- FILOSOFÍA -->
     <section class="philosophy">
-        <h2 class="section-title">YO SOY HIPHOP</h2>
+        <h2 class="section-title">yosoy hiphop</h2>
         <div class="philosophy-text">
             <p>"Más que un artista, soy guardián de la esencia. Desde las calles hasta el estudio, mi misión es mantener viva la llama del hip hop auténtico."</p>
-            <p style="margin-top: 20px;">Cada ritmo es una ofrenda al flow. Cada letra, un manifiesto de conciencia urbana.</p>
+            <p>"Cada ritmo es una ofrenda al flow. Cada letra, un manifiesto de conciencia urbana."</p>
+            <p>"En un mundo de modas pasajeras, construyo cimientos. Mi música es el puente entre el boom bap y la evolución del sonido urbano."</p>
         </div>
     </section>
 
@@ -523,26 +712,24 @@
                 <h3>5TO ELEMENTO</h3>
                 <div class="album-cover">🔥</div>
                 <p class="status">✅ DISPONIBLE</p>
-                <p>Mi EP que el conocimiento que he adquierido en la vida</p>
+                <p>Mi EP que redefine los elementos esenciales del hip hop</p>
                 <p class="production-info">Grabado por KABSTER - MDA</p>
-                <div style="margin-top: 15px;">
-                    <a href="https://open.spotify.com/intl-es/album/3JnxnqVXGnDqiZvQowwMcK?si=PxsTQ2uZSICtTBF5RboT6w" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 8px 15px;">🎵 Spotify</a>
-                    <a href="https://www.youtube.com/channel/UCfpYgGCLM4ZNJHxH4XkrJbw" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 8px 15px;">📺 YouTube</a>
+                <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+                    <a href="https://open.spotify.com/intl-es/album/3JnxnqVXGnDqiZvQowwMcK?si=PxsTQ2uZSICtTBF5RboT6w" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 10px 15px;">🎵 Spotify</a>
+                    <a href="https://www.youtube.com/channel/UCfpYgGCLM4ZNJHxH4XkrJbw" class="social-link" target="_blank" style="font-size: 0.9rem; padding: 10px 15px;">📺 YouTube</a>
                 </div>
             </div>
             
             <div class="release-card">
                 <h3>NORORIENTAL</h3>
-                <!-- PORTADA CON LINK DIRECTO -->
                 <div class="custom-cover" 
                      style="background-image: url('https://i.ibb.co/DfTdL0VQ/portada.jpg');"
                      onclick="abrirGaleria('https://i.ibb.co/DfTdL0VQ/portada.jpg', 'Portada - Nororiental')">
                 </div>
                 <p class="soon">🔜 PRÓXIMAMENTE</p>
-                <p>A SOLO UNOS DIAS</p>
-                <!-- CONTRAPORTADA CON LINK DIRECTO -->
+                <p>Próxima evolución de mi sonido</p>
                 <div class="custom-cover" 
-                     style="background-image: url('https://i.ibb.co/VcbXKvCc/contraportada.jpg'); margin-top: 10px;"
+                     style="background-image: url('https://i.ibb.co/VcbXKvCc/contraportada.jpg'); margin-top: 15px;"
                      onclick="abrirGaleria('https://i.ibb.co/VcbXKvCc/contraportada.jpg', 'Contraportada - Nororiental')">
                 </div>
             </div>
@@ -621,14 +808,14 @@
     <!-- CONTACTO -->
     <section class="contact">
         <h2 class="section-title">CONTACTO</h2>
-        <p>Para colaboraciones, bookings y preguntas:</p>
+        <p style="margin-bottom: 20px; font-size: 1.1rem;">Para colaboraciones, bookings y preguntas:</p>
         <a href="mailto:dsalcedopajoy@gmail.com" class="email-link">dsalcedopajoy@gmail.com</a>
     </section>
 
     <!-- FOOTER -->
     <footer>
         <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
-        <p style="margin-top: 10px; color: #ff5500;">Hip Hop Auténtico - Donde el flow es sagrado</p>
+        <p style="margin-top: 15px; color: #ff5500; font-size: 1.1rem;">yosoy hiphop - Donde el flow es sagrado</p>
     </footer>
 
     <!-- JAVASCRIPT -->
@@ -639,7 +826,6 @@
         let titulosGaleria = [];
 
         function abrirGaleria(src, titulo = '') {
-            // IMÁGENES CON LINKS DIRECTOS
             imagenesGaleria = [
                 'https://i.ibb.co/DfTdL0VQ/portada.jpg',
                 'https://i.ibb.co/VcbXKvCc/contraportada.jpg'
@@ -656,7 +842,6 @@
             document.getElementById('infoImagen').textContent = titulo;
             document.getElementById('galeriaModal').style.display = 'block';
             
-            // Cerrar con tecla ESC
             document.addEventListener('keydown', manejarTeclado);
         }
 
@@ -686,7 +871,6 @@
             if (event.key === 'ArrowLeft') imagenAnterior();
         }
 
-        // Cerrar modal al hacer click fuera de la imagen
         document.getElementById('galeriaModal').addEventListener('click', function(e) {
             if (e.target === this) cerrarGaleria();
         });
@@ -729,7 +913,12 @@
             zonaMensajes.innerHTML = '';
             
             if (mensajesGuardados.length === 0) {
-                zonaMensajes.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">🎤 Sé el primero en debatir sobre hip hop...</p>';
+                zonaMensajes.innerHTML = `
+                    <div class="empty-forum">
+                        <p style="font-size: 1.2rem; margin-bottom: 10px;">🎤 EL TEMPLO ESTÁ VACÍO</p>
+                        <p>Sé el primero en debatir sobre hip hop auténtico...</p>
+                    </div>
+                `;
                 return;
             }
             
@@ -745,7 +934,6 @@
             });
         }
 
-        // Cuando la página cargue, mostrar mensajes existentes
         document.addEventListener('DOMContentLoaded', function() {
             mostrarMensajes();
         });
