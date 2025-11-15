@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RO-LEE MC | ROLEMUSCIK FLICK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -11,16 +12,178 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #ff0000; /* Rojo principal del logo */
+            --primary-dark: #cc0000;
+            --primary-light: #ff3333;
+            --accent: #ff6b00; /* Naranja para acentos */
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --bg-section: #111;
+            --text-light: #f0f0f0;
+            --text-muted: #888;
+            --gold: #ffd700; /* Dorado para detalles premium */
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a0a0a;
+            background-color: var(--bg-dark);
             color: #fff;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
+        /* LOADER */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: url('https://i.ibb.co/CgHdZ51/LOGO-ROLEE-MC-CON-2.png') no-repeat center center;
+            background-size: contain;
+            filter: drop-shadow(0 0 10px var(--primary));
+        }
+
+        .loader-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 0, 0, 0.3);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        .loader-text {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 0 5px var(--primary));
+            transition: all 0.3s ease;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary), var(--gold));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.8)), 
                         url('https://i.ibb.co/2YSq6SWb/IMG-20241031-215343-865.jpg') 
                         no-repeat center center/cover;
             height: 100vh;
@@ -33,65 +196,107 @@
             position: relative;
         }
 
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            background: url('https://i.ibb.co/CgHdZ51/LOGO-ROLEE-MC-CON-2.png') no-repeat center center;
+            background-size: contain;
+            filter: drop-shadow(0 0 20px var(--primary));
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin: 0;
             text-transform: uppercase;
             letter-spacing: 3px;
-            background: linear-gradient(45deg, #ff5500, #ffaa00);
+            background: linear-gradient(45deg, var(--primary), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255, 85, 0, 0.5);
+            text-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
             animation: fadeInUp 1s ease;
         }
 
         .hero .subtitle {
             font-size: clamp(1.2rem, 3vw, 1.5rem);
             margin-top: 20px;
-            color: #ccc;
+            color: var(--text-light);
             animation: fadeInUp 1s ease 0.2s both;
+            font-weight: 300;
         }
 
         .tagline {
             font-size: 1.1rem;
             margin-top: 10px;
-            color: #ff5500;
+            color: var(--primary);
             font-style: italic;
             animation: fadeInUp 1s ease 0.4s both;
+            border: 1px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            background: rgba(255, 0, 0, 0.1);
         }
 
         .cta-button {
             display: inline-block;
             margin-top: 30px;
             padding: 15px 30px;
-            background: linear-gradient(45deg, #ff5500, #e04a00);
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 25px;
             font-weight: bold;
             text-transform: uppercase;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
             animation: fadeInUp 1s ease 0.6s both;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 85, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+            background: linear-gradient(45deg, var(--primary-light), var(--primary));
         }
 
-        .music {
-            padding: 80px 20px;
-            background-color: #111;
-        }
-
+        /* SECTIONS COMMON */
         .section-title {
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 50px;
-            color: #ff5500;
+            color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 2px;
             position: relative;
@@ -105,8 +310,13 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: linear-gradient(45deg, #ff5500, #ffaa00);
+            background: linear-gradient(45deg, var(--primary), var(--gold));
             border-radius: 2px;
+        }
+
+        .music {
+            padding: 100px 20px;
+            background: linear-gradient(45deg, var(--bg-section), #151515);
         }
 
         .releases {
@@ -119,7 +329,7 @@
         }
 
         .release-card {
-            background: #1a1a1a;
+            background: var(--bg-card);
             padding: 30px;
             border-radius: 15px;
             text-align: center;
@@ -137,7 +347,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 85, 0, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
             transition: left 0.5s ease;
         }
 
@@ -146,15 +356,17 @@
         }
 
         .release-card:hover {
-            border-color: #ff5500;
+            border-color: var(--primary);
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 85, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.2);
         }
 
         .release-card h3 {
-            color: #ff5500;
+            color: var(--primary);
             margin-bottom: 15px;
             font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .album-cover {
@@ -163,12 +375,30 @@
             background: linear-gradient(45deg, #333, #555);
             margin: 20px auto;
             border-radius: 10px;
-            border: 2px solid #ff5500;
+            border: 2px solid var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: #ff5500;
+            color: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .album-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .album-cover:hover::before {
+            opacity: 1;
         }
 
         /* IMÁGENES MÁS GRANDES */
@@ -177,14 +407,14 @@
             height: 280px;
             margin: 20px auto;
             border-radius: 15px;
-            border: 3px solid #ff5500;
+            border: 3px solid var(--primary);
             background-size: cover;
             background-position: center;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(255, 85, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
         }
 
         .custom-cover::after {
@@ -194,7 +424,7 @@
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
             font-size: 2rem;
-            background: rgba(255, 85, 0, 0.9);
+            background: rgba(255, 0, 0, 0.9);
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -202,6 +432,7 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease;
+            color: white;
         }
 
         .custom-cover:hover::after {
@@ -210,7 +441,7 @@
 
         .custom-cover:hover {
             transform: scale(1.08);
-            box-shadow: 0 15px 35px rgba(255, 85, 0, 0.4);
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.4);
         }
 
         .status {
@@ -221,16 +452,72 @@
         }
 
         .soon {
-            color: #ffaa00;
+            color: var(--gold);
             font-weight: bold;
             margin: 10px 0;
             font-size: 1.1rem;
         }
 
-        /* NUEVA SECCIÓN: ROLEMUSCIK FLICK */
+        /* VIDEOS SECTION */
+        .video-section {
+            padding: 100px 20px;
+            background: linear-gradient(45deg, var(--bg-section), #2a2a2a);
+        }
+
+        .videos-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-item {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .video-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
+        }
+
+        .video-title {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ROLEMUSCIK FLICK SECTION */
         .rolemuscik-section {
-            padding: 80px 20px;
-            background: linear-gradient(45deg, #0a0a0a, #151515);
+            padding: 100px 20px;
+            background: linear-gradient(45deg, var(--bg-dark), #151515);
         }
 
         .categoria-producciones {
@@ -239,7 +526,7 @@
 
         .categoria-titulo {
             font-size: 2rem;
-            color: #ff5500;
+            color: var(--primary);
             text-align: center;
             margin-bottom: 40px;
             text-transform: uppercase;
@@ -255,7 +542,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: linear-gradient(45deg, #ff5500, #ffaa00);
+            background: linear-gradient(45deg, var(--primary), var(--gold));
             border-radius: 2px;
         }
 
@@ -268,7 +555,7 @@
         }
 
         .produccion-item {
-            background: #1a1a1a;
+            background: var(--bg-card);
             border-radius: 15px;
             padding: 25px;
             border: 2px solid #333;
@@ -277,16 +564,17 @@
         }
 
         .produccion-item:hover {
-            border-color: #ff5500;
+            border-color: var(--primary);
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 85, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
         }
 
         .produccion-titulo {
-            color: #ff5500;
+            color: var(--primary);
             font-size: 1.3rem;
             margin-bottom: 15px;
             font-weight: bold;
+            text-transform: uppercase;
         }
 
         .video-container {
@@ -309,7 +597,7 @@
         }
 
         .produccion-desc {
-            color: #ccc;
+            color: var(--text-light);
             font-size: 0.9rem;
             line-height: 1.4;
         }
@@ -318,17 +606,20 @@
             display: inline-block;
             margin-top: 10px;
             padding: 8px 15px;
-            background: #ff0000;
+            background: var(--primary);
             color: white;
             text-decoration: none;
             border-radius: 5px;
             font-size: 0.8rem;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .youtube-link:hover {
-            background: #cc0000;
+            background: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
         }
 
         .causas-grid {
@@ -340,7 +631,7 @@
         }
 
         .causa-item {
-            background: #1a1a1a;
+            background: var(--bg-card);
             padding: 20px;
             border-radius: 10px;
             border: 1px solid #333;
@@ -349,94 +640,74 @@
         }
 
         .causa-item:hover {
-            border-color: #ff5500;
+            border-color: var(--primary);
             transform: translateY(-3px);
         }
 
         .causa-link {
-            color: #ff5500;
+            color: var(--primary);
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1rem;
+            text-transform: uppercase;
         }
 
         .causa-link:hover {
-            color: #ffaa00;
+            color: var(--gold);
             text-decoration: underline;
         }
 
-        .video-section {
-            padding: 80px 20px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+        /* PHILOSOPHY SECTION */
+        .philosophy {
+            padding: 100px 20px;
+            background: linear-gradient(45deg, var(--bg-section), #2a2a2a);
+            text-align: center;
         }
 
-        .videos-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+        .philosophy-text {
             max-width: 800px;
             margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-light);
         }
 
-        .video-item {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-        }
-
-        .video-item:hover {
-            border-color: #ff5500;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 85, 0, 0.2);
-        }
-
-        .video-title {
-            color: #ff5500;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: bold;
-        }
-
-        .video-wrapper {
+        .philosophy-text p {
+            margin-bottom: 25px;
+            animation: fadeInUp 1s ease;
             position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%;
-            border-radius: 10px;
-            overflow: hidden;
+            padding: 20px;
+            border-left: 3px solid var(--primary);
+            background: rgba(255, 0, 0, 0.05);
+            border-radius: 0 10px 10px 0;
         }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+        .production-info {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 15px;
+            font-style: italic;
         }
 
         /* FORO MEJORADO */
         .forum-section {
-            padding: 80px 20px;
-            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            padding: 100px 20px;
+            background: linear-gradient(45deg, var(--bg-dark), var(--bg-section));
         }
 
         .forum-container {
             max-width: 900px;
             margin: 0 auto;
-            background: #1a1a1a;
+            background: var(--bg-card);
             padding: 40px;
             border-radius: 20px;
-            border: 3px solid #ff5500;
-            box-shadow: 0 15px 40px rgba(255, 85, 0, 0.2);
+            border: 3px solid var(--primary);
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.2);
         }
 
         .forum-title {
             text-align: center;
-            color: #ff5500;
+            color: var(--primary);
             margin-bottom: 30px;
             font-size: 2.2rem;
             text-transform: uppercase;
@@ -466,13 +737,15 @@
 
         .stat-number {
             font-size: 2rem;
-            color: #ff5500;
+            color: var(--primary);
             font-weight: bold;
         }
 
         .stat-label {
             font-size: 0.9rem;
-            color: #ccc;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .forum-categories {
@@ -486,19 +759,21 @@
         .category-btn {
             padding: 10px 20px;
             background: #2a2a2a;
-            color: #ccc;
+            color: var(--text-light);
             border: 1px solid #444;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .category-btn.active,
         .category-btn:hover {
-            background: #ff5500;
+            background: var(--primary);
             color: #000;
-            border-color: #ff5500;
+            border-color: var(--primary);
         }
 
         .formulario-foro {
@@ -515,7 +790,7 @@
             width: 100%;
             padding: 15px;
             margin: 10px 0;
-            background: #1a1a1a;
+            background: var(--bg-card);
             border: 1px solid #444;
             border-radius: 8px;
             color: white;
@@ -528,8 +803,8 @@
         .formulario-foro textarea:focus,
         .formulario-foro select:focus {
             outline: none;
-            border-color: #ff5500;
-            box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
         }
 
         .formulario-foro textarea {
@@ -538,11 +813,11 @@
         }
 
         .btn-publicar {
-            background: linear-gradient(45deg, #ff5500, #e04a00);
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
             color: white;
             border: none;
             padding: 15px 30px;
-            border-radius: 8px;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
@@ -550,17 +825,35 @@
             font-size: 1rem;
             width: 100%;
             margin-top: 10px;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-publicar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-publicar:hover::before {
+            left: 100%;
         }
 
         .btn-publicar:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 85, 0, 0.4);
-            background: linear-gradient(45deg, #ff6600, #ff3300);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+            background: linear-gradient(45deg, var(--primary-light), var(--primary));
         }
 
         .char-count {
             text-align: right;
-            color: #888;
+            color: var(--text-muted);
             font-size: 0.8rem;
             margin-top: 5px;
         }
@@ -576,7 +869,7 @@
             padding: 25px;
             margin: 20px 0;
             border-radius: 15px;
-            border-left: 6px solid #ff5500;
+            border-left: 6px solid var(--primary);
             transition: all 0.3s ease;
             position: relative;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -585,7 +878,7 @@
         .mensaje-hiphop:hover {
             transform: translateX(8px);
             background: #2d2d2d;
-            box-shadow: 0 8px 25px rgba(255, 85, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.1);
         }
 
         .mensaje-header {
@@ -605,7 +898,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #ff5500, #ffaa00);
+            background: linear-gradient(45deg, var(--primary), var(--gold));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -622,7 +915,7 @@
         .action-btn {
             background: none;
             border: none;
-            color: #888;
+            color: var(--text-muted);
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 0.9rem;
@@ -632,16 +925,16 @@
         }
 
         .action-btn:hover {
-            color: #ff5500;
+            color: var(--primary);
         }
 
         .like-btn.liked {
-            color: #ff5500;
+            color: var(--primary);
         }
 
         .empty-forum {
             text-align: center;
-            color: #888;
+            color: var(--text-muted);
             padding: 40px 20px;
             font-style: italic;
             background: #2a2a2a;
@@ -676,9 +969,9 @@
         .imagen-ampliada {
             max-width: 95%;
             max-height: 90vh;
-            border: 4px solid #ff5500;
+            border: 4px solid var(--primary);
             border-radius: 20px;
-            box-shadow: 0 0 80px rgba(255, 85, 0, 0.6);
+            box-shadow: 0 0 80px rgba(255, 0, 0, 0.6);
             object-fit: contain;
             animation: zoomIn 0.4s ease;
         }
@@ -687,7 +980,7 @@
             position: absolute;
             top: 20px;
             right: 30px;
-            color: #ff5500;
+            color: var(--primary);
             font-size: 50px;
             font-weight: bold;
             cursor: pointer;
@@ -703,9 +996,9 @@
         }
 
         .cerrar-modal:hover {
-            color: #ffaa00;
+            color: var(--gold);
             transform: scale(1.1);
-            background: rgba(255, 85, 0, 0.2);
+            background: rgba(255, 0, 0, 0.2);
         }
 
         .controles-galeria {
@@ -719,7 +1012,7 @@
         }
 
         .controles-galeria button {
-            background: rgba(255, 85, 0, 0.9);
+            background: rgba(255, 0, 0, 0.9);
             color: white;
             border: none;
             padding: 15px 25px;
@@ -730,16 +1023,18 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             min-width: 120px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .controles-galeria button:hover {
-            background: #ffaa00;
+            background: var(--gold);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 170, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
         }
 
         .info-imagen {
-            color: #ff5500;
+            color: var(--primary);
             margin-top: 20px;
             font-size: 1.2rem;
             font-weight: bold;
@@ -750,7 +1045,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #ff5500;
+            background: var(--primary);
             color: white;
             width: 50px;
             height: 50px;
@@ -762,7 +1057,7 @@
             opacity: 0;
             visibility: hidden;
             z-index: 1000;
-            box-shadow: 0 5px 15px rgba(255, 85, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
         }
 
         .scroll-top.show {
@@ -771,14 +1066,15 @@
         }
 
         .scroll-top:hover {
-            background: #ffaa00;
+            background: var(--gold);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 170, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
         }
 
+        /* LINKS SECTION */
         .links {
-            padding: 80px 20px;
-            background-color: #0a0a0a;
+            padding: 100px 20px;
+            background-color: var(--bg-dark);
             text-align: center;
         }
 
@@ -793,32 +1089,52 @@
         .social-link {
             display: inline-block;
             padding: 15px 30px;
-            background: #1a1a1a;
-            color: #ff5500;
+            background: var(--bg-card);
+            color: var(--primary);
             text-decoration: none;
             border-radius: 10px;
             border: 2px solid #333;
             transition: all 0.3s ease;
             font-weight: bold;
             font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
         }
 
         .social-link:hover {
-            background: #ff5500;
+            background: var(--primary);
             color: #000;
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 85, 0, 0.3);
-            border-color: #ff5500;
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+            border-color: var(--primary);
         }
 
+        /* CONTACT SECTION */
         .contact {
-            padding: 60px 20px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            padding: 80px 20px;
+            background: linear-gradient(45deg, var(--bg-section), #2a2a2a);
             text-align: center;
         }
 
         .email-link {
-            color: #ff5500;
+            color: var(--primary);
             text-decoration: none;
             font-size: 1.3rem;
             font-weight: bold;
@@ -826,50 +1142,39 @@
             display: inline-block;
             padding: 10px 20px;
             border-radius: 8px;
-            background: rgba(255, 85, 0, 0.1);
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .email-link:hover {
-            color: #ffaa00;
+            color: var(--gold);
             text-decoration: underline;
-            background: rgba(255, 85, 0, 0.2);
+            background: rgba(255, 0, 0, 0.2);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
         }
 
+        /* FOOTER */
         footer {
             padding: 40px 20px;
             background-color: #000;
             text-align: center;
-            color: #666;
-            border-top: 1px solid #333;
+            color: var(--text-muted);
+            border-top: 1px solid var(--primary);
         }
 
-        .philosophy {
-            padding: 80px 20px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-            text-align: center;
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: url('https://i.ibb.co/CgHdZ51/LOGO-ROLEE-MC-CON-2.png') no-repeat center center;
+            background-size: contain;
+            filter: drop-shadow(0 0 10px var(--primary));
         }
 
-        .philosophy-text {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #ccc;
-        }
-
-        .philosophy-text p {
-            margin-bottom: 25px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .production-info {
-            font-size: 1rem;
-            color: #888;
-            margin-top: 15px;
-            font-style: italic;
-        }
-
+        /* ANIMATIONS */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -897,7 +1202,37 @@
             }
         }
 
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 0;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+            }
+            
             .releases {
                 flex-direction: column;
                 align-items: center;
@@ -969,32 +1304,65 @@
             }
         }
 
+        /* SCROLLBAR PERSONALIZADO */
         .zona-mensajes::-webkit-scrollbar {
             width: 10px;
         }
 
         .zona-mensajes::-webkit-scrollbar-track {
-            background: #1a1a1a;
+            background: var(--bg-card);
             border-radius: 5px;
         }
 
         .zona-mensajes::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #ff5500, #ffaa00);
+            background: linear-gradient(45deg, var(--primary), var(--gold));
             border-radius: 5px;
         }
 
         .zona-mensajes::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(45deg, #ff6600, #ffcc00);
+            background: linear-gradient(45deg, var(--primary-light), var(--gold));
         }
     </style>
 </head>
 <body>
+    <!-- LOADER -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-logo"></div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Cargando...</div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <div class="logo-img" style="background: url('https://i.ibb.co/CgHdZ51/LOGO-ROLEE-MC-CON-2.png') no-repeat center center; background-size: contain; height: 50px; width: 50px;"></div>
+                <div class="logo-text">RO-LEE MC</div>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#music" class="nav-link">Música</a></li>
+                <li><a href="#videos" class="nav-link">Videos</a></li>
+                <li><a href="#rolemuscik" class="nav-link">ROLEMUSCIK</a></li>
+                <li><a href="#forum" class="nav-link">Foro</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
     <!-- HERO SECTION -->
-    <section class="hero">
-        <h1>RO-LEE MC</h1>
-        <p class="subtitle">Gestor cultural | Artista</p>
-        <p class="tagline">ROLEMUSCIK FLICK</p>
-        <a href="#music" class="cta-button">Escucha Mi Música</a>
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-logo"></div>
+            <h1>RO-LEE MC</h1>
+            <p class="subtitle">Gestor cultural | Artista</p>
+            <p class="tagline">ROLEMUSCIK FLICK</p>
+            <a href="#music" class="cta-button">Escucha Mi Música</a>
+        </div>
     </section>
 
     <!-- FILOSOFÍA -->
@@ -1039,8 +1407,35 @@
         </div>
     </section>
 
+    <!-- VIDEOS DE RO-LEE MC -->
+    <section id="videos" class="video-section">
+        <h2 class="section-title">VIDEOS</h2>
+        <div class="videos-container">
+            <div class="video-item">
+                <h3 class="video-title">5TO ELEMENTO</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/CLZo4ZOmOWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <h3 class="video-title">SENTIMIENTO REPRIMIDOS - ALBUM TRUE PROXIMAMENTE</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/Cnjqg5yLBCY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <h3 class="video-title">ESCAPO - ALBUM NORORIENTAL</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/CItIptojk2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- NUEVA SECCIÓN: ROLEMUSCIK FLICK -->
-    <section class="rolemuscik-section">
+    <section id="rolemuscik" class="rolemuscik-section">
         <h2 class="section-title">ROLEMUSCIK FLICK</h2>
         
         <!-- PRODUCCIONES VISUALES -->
@@ -1073,9 +1468,8 @@
             </div>
         </div>
 
-        <!-- CONTENIDO EXCLUSIVO -->
+        <!-- CONTENIDO EXCLUSIVO - SIN TÍTULO -->
         <div class="categoria-producciones">
-            <h3 class="categoria-titulo">📱 CONTENIDO EXCLUSIVO</h3>
             <div class="producciones-grid">
                 <div class="produccion-item">
                     <h4 class="produccion-titulo">PRODUCCIÓN ROLEMUSCIK FLICK</h4>
@@ -1103,9 +1497,8 @@
             </div>
         </div>
 
-        <!-- COLABORACIONES -->
+        <!-- COLABORACIONES - SIN TÍTULO -->
         <div class="categoria-producciones">
-            <h3 class="categoria-titulo">🤝 COLABORACIONES</h3>
             <div class="producciones-grid">
                 <div class="produccion-item">
                     <h4 class="produccion-titulo">MENTES NOCTURNAS & MILLER JOYA</h4>
@@ -1150,33 +1543,6 @@
         </div>
     </section>
 
-    <!-- VIDEOS DE RO-LEE MC -->
-    <section class="video-section">
-        <h2 class="section-title">VIDEOS</h2>
-        <div class="videos-container">
-            <div class="video-item">
-                <h3 class="video-title">5TO ELEMENTO</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/CLZo4ZOmOWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            
-            <div class="video-item">
-                <h3 class="video-title">SENTIMIENTO REPRIMIDOS - ALBUM TRUE PROXIMAMENTE</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/Cnjqg5yLBCY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            
-            <div class="video-item">
-                <h3 class="video-title">ESCAPO - ALBUM NORORIENTAL</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/CItIptojk2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- GALERÍA MODAL -->
     <div id="galeriaModal" class="modal-galeria">
         <div class="modal-contenido">
@@ -1192,13 +1558,13 @@
     </div>
 
     <!-- FORO PERMANENTE MEJORADO -->
-    <section class="forum-section">
+    <section id="forum" class="forum-section">
         <div class="forum-container">
             <h2 class="forum-title">🎤 EL TEMPLO - DEBATES HIP HOP</h2>
             
             <!-- ESTADÍSTICAS DEL FORO -->
             <div class="forum-stats">
-                <h3 style="color: #ff5500; margin-bottom: 15px;">COMUNIDAD ACTIVA</h3>
+                <h3 style="color: var(--primary); margin-bottom: 15px;">COMUNIDAD ACTIVA</h3>
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-number" id="totalMensajes">0</div>
@@ -1264,7 +1630,7 @@
     </section>
 
     <!-- CONTACTO -->
-    <section class="contact">
+    <section id="contact" class="contact">
         <h2 class="section-title">CONTACTO</h2>
         <p style="margin-bottom: 20px; font-size: 1.1rem;">Para colaboraciones, bookings y preguntas:</p>
         <a href="mailto:dsalcedopajoy@gmail.com" class="email-link">dsalcedopajoy@gmail.com</a>
@@ -1272,8 +1638,9 @@
 
     <!-- FOOTER -->
     <footer>
+        <div class="footer-logo"></div>
         <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
-        <p style="margin-top: 15px; color: #ff5500; font-size: 1.1rem;">yosoy hiphop - Donde el flow es sagrado</p>
+        <p style="margin-top: 15px; color: var(--primary); font-size: 1.1rem;">yosoy hiphop - Donde el flow es sagrado</p>
     </footer>
 
     <!-- BOTÓN SCROLL TO TOP -->
@@ -1281,6 +1648,40 @@
 
     <!-- JAVASCRIPT -->
     <script>
+        // ===== LOADER =====
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('pageLoader').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('pageLoader').style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // ===== NAVIGATION =====
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+            });
+        });
+
         // ===== SISTEMA DE FORO MEJORADO =====
         let mensajesGuardados = JSON.parse(localStorage.getItem('foroHipHop')) || [];
         let filtroActual = 'todos';
@@ -1338,9 +1739,9 @@
             if (mensajesFiltrados.length === 0) {
                 zonaMensajes.innerHTML = `
                     <div class="empty-forum">
-                        <p style="font-size: 1.3rem; margin-bottom: 15px; color: #ff5500;">🎤 EL TEMPLO ESTÁ VACÍO</p>
+                        <p style="font-size: 1.3rem; margin-bottom: 15px; color: var(--primary);">🎤 EL TEMPLO ESTÁ VACÍO</p>
                         <p style="font-size: 1.1rem;">Sé el primero en debatir sobre hip hop auténtico...</p>
-                        <p style="margin-top: 10px; color: #888;">💡 Comparte tu opinión sobre álbumes, artistas, o la escena local</p>
+                        <p style="margin-top: 10px; color: var(--text-muted);">💡 Comparte tu opinión sobre álbumes, artistas, o la escena local</p>
                     </div>
                 `;
                 return;
@@ -1362,9 +1763,9 @@
                             <div class="user-info">
                                 <div class="user-avatar">${avatarText}</div>
                                 <div>
-                                    <strong style="color: #ff5500;">${msg.nombre}</strong>
+                                    <strong style="color: var(--primary);">${msg.nombre}</strong>
                                     <div style="display: flex; align-items: center; gap: 10px; margin-top: 5px;">
-                                        <small style="color: #888;">📅 ${msg.fecha}</small>
+                                        <small style="color: var(--text-muted);">📅 ${msg.fecha}</small>
                                         <span style="background: #333; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem;">
                                             ${categoriaIcon} ${msg.categoria.toUpperCase()}
                                         </span>
@@ -1449,9 +1850,9 @@
             charCount.textContent = `${textarea.value.length}/500 caracteres`;
             
             if (textarea.value.length > 450) {
-                charCount.style.color = '#ff5500';
+                charCount.style.color = 'var(--primary)';
             } else {
-                charCount.style.color = '#888';
+                charCount.style.color = 'var(--text-muted)';
             }
         }
 
@@ -1522,6 +1923,20 @@
 
         document.getElementById('galeriaModal').addEventListener('click', function(e) {
             if (e.target === this) cerrarGaleria();
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
 
         // ===== INICIALIZACIÓN =====
