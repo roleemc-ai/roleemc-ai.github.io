@@ -314,7 +314,7 @@
             border-radius: 2px;
         }
 
-        /* NUEVA SECCIÓN: MERCHANDISING */
+        /* MEJORAS PARA LA SECCIÓN MERCH */
         .merch-section {
             padding: 100px 20px;
             background: linear-gradient(45deg, var(--bg-section), #151515);
@@ -360,19 +360,45 @@
             box-shadow: 0 15px 30px rgba(255, 0, 0, 0.2);
         }
 
-        .merch-image {
-            width: 100%;
-            max-width: 300px;
-            height: 300px;
-            object-fit: cover;
+        .merch-image-container {
+            position: relative;
+            overflow: hidden;
             border-radius: 10px;
             border: 3px solid var(--primary);
             margin-bottom: 20px;
-            transition: all 0.3s ease;
         }
 
-        .merch-item:hover .merch-image {
+        .merch-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .merch-image:hover {
             transform: scale(1.05);
+        }
+
+        .zoom-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 0, 0, 0.9);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .merch-image-container:hover .zoom-icon {
+            opacity: 1;
         }
 
         .merch-title {
@@ -381,13 +407,6 @@
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-
-        .merch-price {
-            color: var(--gold);
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin: 15px 0;
         }
 
         .merch-description {
@@ -406,13 +425,66 @@
             padding: 8px 0;
             color: var(--text-light);
             border-bottom: 1px solid #333;
+            font-size: 0.9rem;
         }
 
         .merch-features li:before {
-            content: '✓';
-            color: var(--primary);
-            font-weight: bold;
+            content: '✅';
             margin-right: 10px;
+        }
+
+        .sizes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .size-btn {
+            padding: 8px 15px;
+            background: #2a2a2a;
+            color: var(--text-light);
+            border: 1px solid #444;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .size-btn.active,
+        .size-btn:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+        }
+
+        .precio-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .merch-price {
+            color: var(--gold);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .envio-gratis {
+            background: var(--primary);
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .stock-info {
+            color: #00ff00;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 1.1rem;
         }
 
         .btn-comprar {
@@ -451,38 +523,6 @@
             background: linear-gradient(45deg, var(--primary-light), var(--primary));
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
-        }
-
-        .stock-info {
-            color: #00ff00;
-            font-weight: bold;
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
-
-        .sizes {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 15px 0;
-            flex-wrap: wrap;
-        }
-
-        .size-btn {
-            padding: 8px 15px;
-            background: #2a2a2a;
-            color: var(--text-light);
-            border: 1px solid #444;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .size-btn.active,
-        .size-btn:hover {
-            background: var(--primary);
-            color: #000;
-            border-color: var(--primary);
         }
 
         .music {
@@ -1304,27 +1344,55 @@
             text-align: center;
         }
 
-        .email-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 8px;
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
-        .email-link:hover {
-            color: var(--gold);
-            text-decoration: underline;
-            background: rgba(255, 0, 0, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--bg-card);
+            border: 2px solid #333;
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .contact-link:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
+        }
+
+        .contact-link.whatsapp:hover {
+            background: #25D366;
+            color: #000;
+        }
+
+        .contact-link.email:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid var(--primary);
         }
 
         /* FOOTER */
@@ -1481,6 +1549,10 @@
             .stat-number {
                 font-size: 1.5rem;
             }
+
+            .contact-methods {
+                flex-direction: column;
+            }
         }
 
         /* SCROLLBAR PERSONALIZADO */
@@ -1606,75 +1678,102 @@
         </div>
     </section>
 
-    <!-- NUEVA SECCIÓN: MERCHANDISING -->
+    <!-- SECCIÓN MERCH MEJORADA -->
     <section id="merch" class="merch-section">
         <h2 class="section-title">🔥 MERCH RO-LEE MC</h2>
         <div class="merch-grid">
+            <!-- CAMISETA -->
             <div class="merch-item">
-                <img src="file:///D:/Downloads/WhatsApp%20Image%202025-11-22%20at%208.32.44%20AM.jpeg" alt="Camiseta RO-LEE MC" class="merch-image">
+                <div class="merch-image-container">
+                    <img src="https://i.ibb.co/3Yzdh8Xj/Whats-App-Image-2025-11-22-at-8-32-44-AM.jpg" 
+                         alt="Camiseta RO-LEE MC" class="merch-image"
+                         onclick="abrirGaleriaMerch('https://i.ibb.co/3Yzdh8Xj/Whats-App-Image-2025-11-22-at-8-32-44-AM.jpg', 'Camiseta RO-LEE MC')">
+                    <div class="zoom-icon">🔍</div>
+                </div>
                 <h3 class="merch-title">Camiseta Classic</h3>
-                <p class="merch-description">Camiseta premium con el logo de RO-LEE MC. 100% algodón, calidad premium.</p>
+                <p class="merch-description">Camiseta premium con diseño exclusivo RO-LEE MC. Calidad premium 100% algodón.</p>
                 <ul class="merch-features">
                     <li>100% Algodón Premium</li>
-                    <li>Estampado de alta calidad</li>
+                    <li>Estampado alta calidad</li>
                     <li>Talles S, M, L, XL</li>
-                    <li>Envio gratis</li>
+                    <li>Envío gratis</li>
                 </ul>
                 <div class="sizes">
-                    <button class="size-btn active">S</button>
-                    <button class="size-btn">M</button>
-                    <button class="size-btn">L</button>
-                    <button class="size-btn">XL</button>
+                    <button class="size-btn" onclick="seleccionarTalla(this, 'S')">S</button>
+                    <button class="size-btn active" onclick="seleccionarTalla(this, 'M')">M</button>
+                    <button class="size-btn" onclick="seleccionarTalla(this, 'L')">L</button>
+                    <button class="size-btn" onclick="seleccionarTalla(this, 'XL')">XL</button>
                 </div>
-                <div class="merch-price">$60.000 COP</div>
-                <p class="stock-info">✅ EN STOCK</p>
-                <button class="btn-comprar" onclick="comprarProducto('Camiseta Classic')">
+                <div class="precio-container">
+                    <div class="merch-price">$65.000 COP</div>
+                    <div class="envio-gratis">🚚 Envío GRATIS</div>
+                </div>
+                <p class="stock-info">✅ EN STOCK - Listo para enviar</p>
+                <button class="btn-comprar" onclick="comprarProducto('Camiseta Classic', 65000)">
                     🛒 COMPRAR AHORA
                 </button>
             </div>
             
+            <!-- SUDADERA -->
             <div class="merch-item">
-                <img src="file:///D:/Downloads/WhatsApp%20Image%202025-11-22%20at%208.32.45%20AM.jpeg" alt="Sudadera RO-LEE MC" class="merch-image">
-                <h3 class="merch-title">Sudadera Hoodie</h3>
-                <p class="merch-description">Sudadera con capucha, perfecta para el estilo urbano. Calidad superior.</p>
+                <div class="merch-image-container">
+                    <img src="https://i.ibb.co/27LwjYHL/Whats-App-Image-2025-11-22-at-8-49-52-AM.jpg" 
+                         alt="Sudadera RO-LEE MC" class="merch-image"
+                         onclick="abrirGaleriaMerch('https://i.ibb.co/27LwjYHL/Whats-App-Image-2025-11-22-at-8-49-52-AM.jpg', 'Sudadera RO-LEE MC')">
+                    <div class="zoom-icon">🔍</div>
+                </div>
+                <h3 class="merch-title">Sudadera Completa</h3>
+                <p class="merch-description">Sudadera completa con capucha, perfecta para tu estilo urbano. Calidad superior.</p>
                 <ul class="merch-features">
                     <li>Mezcla algodón/poliéster</li>
-                    <li>Bolsillo frontal canguro</li>
-                    <li>Talles M, L, XL, XXL</li>
-                    <li>Envio gratis</li>
+                    <li>Capucha ajustable</li>
+                    <li>Bolsillo canguro</li>
+                    <li>Envío gratis</li>
                 </ul>
                 <div class="sizes">
-                    <button class="size-btn">M</button>
-                    <button class="size-btn active">L</button>
-                    <button class="size-btn">XL</button>
-                    <button class="size-btn">XXL</button>
+                    <button class="size-btn" onclick="seleccionarTalla(this, 'S')">S</button>
+                    <button class="size-btn active" onclick="seleccionarTalla(this, 'M')">M</button>
+                    <button class="size-btn" onclick="seleccionarTalla(this, 'L')">L</button>
+                    <button class="size-btn" onclick="seleccionarTalla(this, 'XL')">XL</button>
                 </div>
-                <div class="merch-price">$120.000 COP</div>
-                <p class="stock-info">✅ EN STOCK</p>
-                <button class="btn-comprar" onclick="comprarProducto('Sudadera Hoodie')">
+                <div class="precio-container">
+                    <div class="merch-price">$120.000 COP</div>
+                    <div class="envio-gratis">🚚 Envío GRATIS</div>
+                </div>
+                <p class="stock-info">✅ EN STOCK - Listo para enviar</p>
+                <button class="btn-comprar" onclick="comprarProducto('Sudadera Completa', 120000)">
                     🛒 COMPRAR AHORA
                 </button>
             </div>
 
+            <!-- BUSO -->
             <div class="merch-item">
-                <img src="file:///D:/Downloads/WhatsApp%20Image%202025-11-22%20at%208.49.52%20AM.jpeg" alt="Buso RO-LEE MC" class="merch-image">
-                <h3 class="merch-title">Buso Crewneck</h3>
-                <p class="merch-description">Buso estilo crewneck con diseño exclusivo RO-LEE MC. Elegancia urbana.</p>
+                <div class="merch-image-container">
+                    <img src="https://i.ibb.co/GvkLrPvC/Whats-App-Image-2025-11-22-at-8-32-45-AM.jpg" 
+                         alt="Buso RO-LEE MC" class="merch-image"
+                         onclick="abrirGaleriaMerch('https://i.ibb.co/GvkLrPvC/Whats-App-Image-2025-11-22-at-8-32-45-AM.jpg', 'Buso RO-LEE MC')">
+                    <div class="zoom-icon">🔍</div>
+                </div>
+                <h3 class="merch-title">Buso con Capota</h3>
+                <p class="merch-description">Buso con capota estilo urbano, diseño exclusivo RO-LEE MC. Máxima comodidad.</p>
                 <ul class="merch-features">
                     <li>Algodón French Terry</li>
+                    <li>Capota incorporada</li>
                     <li>Acabados premium</li>
-                    <li>Talles S, M, L, XL</li>
-                    <li>Envio gratis</li>
+                    <li>Envío gratis</li>
                 </ul>
                 <div class="sizes">
-                    <button class="size-btn">S</button>
-                    <button class="size-btn active">M</button>
-                    <button class="size-btn">L</button>
-                    <button class="size-btn">XL</button>
+                    <button class="size-btn" onclick="seleccionarTalla(this, 'S')">S</button>
+                    <button class="size-btn active" onclick="seleccionarTalla(this, 'M')">M</button>
+                    <button class="size-btn" onclick="seleccionarTalla(this, 'L')">L</button>
+                    <button class="size-btn" onclick="seleccionarTalla(this, 'XL')">XL</button>
                 </div>
-                <div class="merch-price">$85.000 COP</div>
-                <p class="stock-info">✅ EN STOCK</p>
-                <button class="btn-comprar" onclick="comprarProducto('Buso Crewneck')">
+                <div class="precio-container">
+                    <div class="merch-price">$85.000 COP</div>
+                    <div class="envio-gratis">🚚 Envío GRATIS</div>
+                </div>
+                <p class="stock-info">✅ EN STOCK - Listo para enviar</p>
+                <button class="btn-comprar" onclick="comprarProducto('Buso con Capota', 85000)">
                     🛒 COMPRAR AHORA
                 </button>
             </div>
@@ -1838,7 +1937,7 @@
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/ExNRr1Uw-yE" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <p class="produccion-desc"></p>
+                    <p class="produccion-desc">Uno de los primeros videos que realizamos</p>
                 </div>
             </div>
         </div>
@@ -1884,24 +1983,42 @@
         </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- CONTACTO MEJORADO -->
     <section id="contact" class="contact">
         <h2 class="section-title">CONTACTO</h2>
-        <p style="margin-bottom: 20px; font-size: 1.1rem;">Para colaboraciones, bookings y preguntas:</p>
-        <a href="mailto:dsalcedopajoy@gmail.com" class="email-link">dsalcedopajoy@gmail.com</a>
+        <p style="margin-bottom: 20px; font-size: 1.1rem;">Para colaboraciones, bookings, compras y preguntas:</p>
+        
+        <div class="contact-methods">
+            <a href="https://wa.me/573132216307" class="contact-link whatsapp" target="_blank">
+                <span class="contact-icon">📱</span>
+                <span class="contact-text">WhatsApp: 313 221 6307</span>
+            </a>
+            
+            <a href="mailto:dsalcedopajoy@gmail.com" class="contact-link email">
+                <span class="contact-icon">📧</span>
+                <span class="contact-text">dsalcedopajoy@gmail.com</span>
+            </a>
+        </div>
+        
+        <div class="contact-info">
+            <p style="color: var(--text-muted); text-align: center;">
+                💬 <strong>Respuesta rápida por WhatsApp</strong><br>
+                📦 <strong>Envíos a toda Colombia</strong>
+            </p>
+        </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
         <div class="footer-logo"></div>
         <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
-        <p style="margin-top: 15px; color: var(--primary); font-size: 1.1rem;">YO SOY HIPHOP </p>
+        <p style="margin-top: 15px; color: var(--primary); font-size: 1.1rem;">YO SOY HIPHOP</p>
     </footer>
 
     <!-- BOTÓN SCROLL TO TOP -->
     <button class="scroll-top" onclick="scrollToTop()">↑</button>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT COMPLETO Y FUNCIONAL -->
     <script>
         // ===== LOADER =====
         window.addEventListener('load', function() {
@@ -2111,107 +2228,113 @@
             }
         }
 
-<!-- SECCIÓN MERCH MEJORADA -->
-<section id="merch" class="merch-section">
-    <h2 class="section-title">🔥 MERCH RO-LEE MC</h2>
-    <div class="merch-grid">
-        <!-- CAMISETA -->
-        <div class="merch-item">
-            <div class="merch-image-container">
-                <img src="https://i.ibb.co/3Yzdh8Xj/Whats-App-Image-2025-11-22-at-8-32-44-AM.jpg" 
-                     alt="Camiseta RO-LEE MC" class="merch-image"
-                     onclick="abrirGaleriaMerch('https://i.ibb.co/3Yzdh8Xj/Whats-App-Image-2025-11-22-at-8-32-44-AM.jpg', 'Camiseta RO-LEE MC')">
-                <div class="zoom-icon">🔍</div>
-            </div>
-            <h3 class="merch-title">Camiseta Classic</h3>
-            <p class="merch-description">Camiseta premium con diseño exclusivo RO-LEE MC. Calidad premium 100% algodón.</p>
-            <ul class="merch-features">
-                <li>✅ 100% Algodón Premium</li>
-                <li>✅ Estampado alta calidad</li>
-                <li>✅ Talles S, M, L, XL</li>
-                <li>✅ Envío gratis</li>
-            </ul>
-            <div class="sizes">
-                <button class="size-btn" onclick="seleccionarTalla(this, 'S')">S</button>
-                <button class="size-btn active" onclick="seleccionarTalla(this, 'M')">M</button>
-                <button class="size-btn" onclick="seleccionarTalla(this, 'L')">L</button>
-                <button class="size-btn" onclick="seleccionarTalla(this, 'XL')">XL</button>
-            </div>
-            <div class="precio-container">
-                <div class="merch-price">$65.000 COP</div>
-                <div class="envio-gratis">🚚 Envío GRATIS</div>
-            </div>
-            <p class="stock-info">✅ EN STOCK - Listo para enviar</p>
-            <button class="btn-comprar" onclick="comprarProducto('Camiseta Classic', 65000)">
-                🛒 COMPRAR AHORA
-            </button>
-        </div>
-        
-        <!-- SUDADERA -->
-        <div class="merch-item">
-            <div class="merch-image-container">
-                <img src="https://i.ibb.co/27LwjYHL/Whats-App-Image-2025-11-22-at-8-49-52-AM.jpg" 
-                     alt="Sudadera RO-LEE MC" class="merch-image"
-                     onclick="abrirGaleriaMerch('https://i.ibb.co/27LwjYHL/Whats-App-Image-2025-11-22-at-8-49-52-AM.jpg', 'Sudadera RO-LEE MC')">
-                <div class="zoom-icon">🔍</div>
-            </div>
-            <h3 class="merch-title">Sudadera Completa</h3>
-            <p class="merch-description">Sudadera completa con capucha, perfecta para tu estilo urbano. Calidad superior.</p>
-            <ul class="merch-features">
-                <li>✅ Mezcla algodón/poliéster</li>
-                <li>✅ Capucha ajustable</li>
-                <li>✅ Bolsillo canguro</li>
-                <li>✅ Envío gratis</li>
-            </ul>
-            <div class="sizes">
-                <button class="size-btn" onclick="seleccionarTalla(this, 'S')">S</button>
-                <button class="size-btn active" onclick="seleccionarTalla(this, 'M')">M</button>
-                <button class="size-btn" onclick="seleccionarTalla(this, 'L')">L</button>
-                <button class="size-btn" onclick="seleccionarTalla(this, 'XL')">XL</button>
-            </div>
-            <div class="precio-container">
-                <div class="merch-price">$120.000 COP</div>
-                <div class="envio-gratis">🚚 Envío GRATIS</div>
-            </div>
-            <p class="stock-info">✅ EN STOCK - Listo para enviar</p>
-            <button class="btn-comprar" onclick="comprarProducto('Sudadera Completa', 120000)">
-                🛒 COMPRAR AHORA
-            </button>
-        </div>
+        // ===== FUNCIONES PARA EL MERCH =====
+        function seleccionarTalla(boton, talla) {
+            // Remover active de todos los botones del mismo producto
+            const contenedor = boton.parentElement;
+            contenedor.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Agregar active al botón clickeado
+            boton.classList.add('active');
+        }
 
-        <!-- BUSO -->
-        <div class="merch-item">
-            <div class="merch-image-container">
-                <img src="https://i.ibb.co/GvkLrPvC/Whats-App-Image-2025-11-22-at-8-32-45-AM.jpg" 
-                     alt="Buso RO-LEE MC" class="merch-image"
-                     onclick="abrirGaleriaMerch('https://i.ibb.co/GvkLrPvC/Whats-App-Image-2025-11-22-at-8-32-45-AM.jpg', 'Buso RO-LEE MC')">
-                <div class="zoom-icon">🔍</div>
-            </div>
-            <h3 class="merch-title">Buso con Capota</h3>
-            <p class="merch-description">Buso con capota estilo urbano, diseño exclusivo RO-LEE MC. Máxima comodidad.</p>
-            <ul class="merch-features">
-                <li>✅ Algodón French Terry</li>
-                <li>✅ Capota incorporada</li>
-                <li>✅ Acabados premium</li>
-                <li>✅ Envío gratis</li>
-            </ul>
-            <div class="sizes">
-                <button class="size-btn" onclick="seleccionarTalla(this, 'S')">S</button>
-                <button class="size-btn active" onclick="seleccionarTalla(this, 'M')">M</button>
-                <button class="size-btn" onclick="seleccionarTalla(this, 'L')">L</button>
-                <button class="size-btn" onclick="seleccionarTalla(this, 'XL')">XL</button>
-            </div>
-            <div class="precio-container">
-                <div class="merch-price">$85.000 COP</div>
-                <div class="envio-gratis">🚚 Envío GRATIS</div>
-            </div>
-            <p class="stock-info">✅ EN STOCK - Listo para enviar</p>
-            <button class="btn-comprar" onclick="comprarProducto('Buso con Capota', 85000)">
-                🛒 COMPRAR AHORA
-            </button>
-        </div>
-    </div>
-</section>
+        function comprarProducto(producto, precio) {
+            const tallaSeleccionada = document.querySelector('.merch-item .size-btn.active');
+            const talla = tallaSeleccionada ? tallaSeleccionada.textContent : 'M';
+            
+            // Mensaje para WhatsApp
+            const mensajeWhatsApp = `¡Hola RO-LEE MC! 👋\n\nEstoy interesad@ en comprar:\n🛒 *Producto:* ${producto}\n💰 *Precio:* $${precio.toLocaleString()} COP\n📏 *Talla:* ${talla}\n\nPor favor, necesito información para completar mi compra.`;
+            
+            // Codificar el mensaje para URL
+            const mensajeCodificado = encodeURIComponent(mensajeWhatsApp);
+            const urlWhatsApp = `https://wa.me/573132216307?text=${mensajeCodificado}`;
+            
+            // Abrir WhatsApp
+            window.open(urlWhatsApp, '_blank');
+            
+            // También mostrar confirmación en la página
+            const mensajeConfirmacion = `🛒 ¡PERFECTO! \n\nProducto: ${producto}\nPrecio: $${precio.toLocaleString()} COP\nTalla: ${talla}\n\n📱 *Redirigiendo a WhatsApp...*\n\nSi no se abre automáticamente, escribe al:\n📞 313 221 6307`;
+            
+            alert(mensajeConfirmacion);
+        }
+
+        function abrirGaleriaMerch(src, titulo) {
+            document.getElementById('imagenAmpliada').src = src;
+            document.getElementById('infoImagen').textContent = titulo;
+            document.getElementById('galeriaModal').style.display = 'block';
+        }
+
+        // ===== GALERÍA DE IMÁGENES =====
+        let imagenesGaleria = [];
+        let imagenActual = 0;
+        let titulosGaleria = [];
+
+        function abrirGaleria(src, titulo = '') {
+            imagenesGaleria = [
+                'https://i.ibb.co/DfTdL0VQ/portada.jpg',
+                'https://i.ibb.co/VcbXKvCc/contraportada.jpg'
+            ];
+            
+            titulosGaleria = [
+                'Portada - Nororiental',
+                'Contraportada - Nororiental'
+            ];
+            
+            imagenActual = imagenesGaleria.indexOf(src);
+            
+            document.getElementById('imagenAmpliada').src = src;
+            document.getElementById('infoImagen').textContent = titulo;
+            document.getElementById('galeriaModal').style.display = 'block';
+            
+            document.addEventListener('keydown', manejarTeclado);
+        }
+
+        function cerrarGaleria() {
+            document.getElementById('galeriaModal').style.display = 'none';
+            document.removeEventListener('keydown', manejarTeclado);
+        }
+
+        function imagenSiguiente() {
+            imagenActual = (imagenActual + 1) % imagenesGaleria.length;
+            actualizarGaleria();
+        }
+
+        function imagenAnterior() {
+            imagenActual = (imagenActual - 1 + imagenesGaleria.length) % imagenesGaleria.length;
+            actualizarGaleria();
+        }
+
+        function actualizarGaleria() {
+            document.getElementById('imagenAmpliada').src = imagenesGaleria[imagenActual];
+            document.getElementById('infoImagen').textContent = titulosGaleria[imagenActual];
+        }
+
+        function manejarTeclado(event) {
+            if (event.key === 'Escape') cerrarGaleria();
+            if (event.key === 'ArrowRight') imagenSiguiente();
+            if (event.key === 'ArrowLeft') imagenAnterior();
+        }
+
+        document.getElementById('galeriaModal').addEventListener('click', function(e) {
+            if (e.target === this) cerrarGaleria();
+        });
+
+        // ===== SCROLL TO TOP =====
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', function() {
+            let scrollBtn = document.querySelector('.scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
         // ===== SMOOTH SCROLL =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -2233,6 +2356,11 @@
             
             // Contador de caracteres en tiempo real
             document.getElementById('postText').addEventListener('input', actualizarContadorCaracteres);
+            
+            // Inicializar selección de tallas
+            document.querySelectorAll('.size-btn.active').forEach(btn => {
+                btn.classList.add('active');
+            });
         });
     </script>
 </body>
