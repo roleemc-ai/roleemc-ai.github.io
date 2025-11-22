@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RO-LEE MC | ROLEMUSCIK FLICK</title>
+    <title>RO-LEE MC | ROLEEMUSCIK FLICK</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -312,6 +312,177 @@
             height: 3px;
             background: linear-gradient(45deg, var(--primary), var(--gold));
             border-radius: 2px;
+        }
+
+        /* NUEVA SECCIÓN: MERCHANDISING */
+        .merch-section {
+            padding: 100px 20px;
+            background: linear-gradient(45deg, var(--bg-section), #151515);
+        }
+
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .merch-item {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .merch-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .merch-item:hover::before {
+            left: 100%;
+        }
+
+        .merch-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.2);
+        }
+
+        .merch-image {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid var(--primary);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .merch-item:hover .merch-image {
+            transform: scale(1.05);
+        }
+
+        .merch-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .merch-price {
+            color: var(--gold);
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .merch-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .merch-features {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .merch-features li {
+            padding: 8px 0;
+            color: var(--text-light);
+            border-bottom: 1px solid #333;
+        }
+
+        .merch-features li:before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .btn-comprar {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-comprar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-comprar:hover::before {
+            left: 100%;
+        }
+
+        .btn-comprar:hover {
+            background: linear-gradient(45deg, var(--primary-light), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .stock-info {
+            color: #00ff00;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .sizes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .size-btn {
+            padding: 8px 15px;
+            background: #2a2a2a;
+            color: var(--text-light);
+            border: 1px solid #444;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .size-btn.active,
+        .size-btn:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
         }
 
         .music {
@@ -689,7 +860,7 @@
             font-style: italic;
         }
 
-        /* FORO MEJORADO */
+        /* FORO MEJORADO - AHORA ES LA PRIMERA SECCIÓN DESPUÉS DEL HERO */
         .forum-section {
             padding: 100px 20px;
             background: linear-gradient(45deg, var(--bg-dark), var(--bg-section));
@@ -1258,6 +1429,14 @@
                 text-align: center;
             }
 
+            .merch-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .merch-image {
+                height: 250px;
+            }
+
             .controles-galeria {
                 flex-direction: column;
                 align-items: center;
@@ -1342,10 +1521,11 @@
                 <div class="logo-text">RO-LEE MC</div>
             </a>
             <ul class="nav-menu" id="navMenu">
+                <li><a href="#forum" class="nav-link">Debates</a></li>
+                <li><a href="#merch" class="nav-link">Merch</a></li>
                 <li><a href="#music" class="nav-link">Música</a></li>
                 <li><a href="#videos" class="nav-link">Videos</a></li>
                 <li><a href="#rolemuscik" class="nav-link">ROLEMUSCIK</a></li>
-                <li><a href="#forum" class="nav-link">Foro</a></li>
                 <li><a href="#contact" class="nav-link">Contacto</a></li>
             </ul>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1361,7 +1541,143 @@
             <h1>RO-LEE MC</h1>
             <p class="subtitle">Gestor cultural | Artista</p>
             <p class="tagline">ROLEMUSCIK FLICK</p>
-            <a href="#music" class="cta-button">Escucha Mi Música</a>
+            <a href="#forum" class="cta-button">Únete al Debate</a>
+        </div>
+    </section>
+
+    <!-- FORO MEJORADO - AHORA ES LA PRIMERA SECCIÓN -->
+    <section id="forum" class="forum-section">
+        <div class="forum-container">
+            <h2 class="forum-title">🎤 EL TEMPLO - DEBATES HIP HOP</h2>
+            
+            <!-- ESTADÍSTICAS DEL FORO -->
+            <div class="forum-stats">
+                <h3 style="color: var(--primary); margin-bottom: 15px;">COMUNIDAD ACTIVA</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalMensajes">0</div>
+                        <div class="stat-label">MENSAJES</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalUsuarios">0</div>
+                        <div class="stat-label">USUARIOS</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalLikes">0</div>
+                        <div class="stat-label">LIKES</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORÍAS DE DEBATE -->
+            <div class="forum-categories">
+                <button class="category-btn active" onclick="filtrarMensajes('todos')">🎵 TODOS</button>
+                <button class="category-btn" onclick="filtrarMensajes('musica')">🎤 MÚSICA</button>
+                <button class="category-btn" onclick="filtrarMensajes('letras')">📝 LETRAS</button>
+                <button class="category-btn" onclick="filtrarMensajes('escena')">🏙️ ESCENA</button>
+                <button class="category-btn" onclick="filtrarMensajes('produccion')">🎧 PRODUCCIÓN</button>
+                <button class="category-btn" onclick="filtrarMensajes('freestyle')">🔥 FREESTYLE</button>
+            </div>
+            
+            <!-- FORMULARIO MEJORADO -->
+            <div class="formulario-foro">
+                <input type="text" id="userName" placeholder="🎤 Tu nombre o alias (obligatorio)" maxlength="30">
+                <select id="postCategory">
+                    <option value="musica">🎵 Música</option>
+                    <option value="letras">📝 Letras</option>
+                    <option value="escena">🏙️ Escena</option>
+                    <option value="produccion">🎧 Producción</option>
+                    <option value="freestyle">🔥 Freestyle</option>
+                </select>
+                <textarea id="postText" placeholder="💭 Escribe tu debate sobre hip hop... 
+¿Qué álbum te marcó? 
+¿Qué artista está cambiando el juego? 
+¿Cómo ves la evolución del género?" maxlength="500"></textarea>
+                <div class="char-count" id="charCount">0/500 caracteres</div>
+                <button class="btn-publicar" onclick="publicarMensaje()">
+                    🚀 PUBLICAR EN EL TEMPLO
+                </button>
+            </div>
+            
+            <!-- ZONA DE MENSAJES MEJORADA -->
+            <div id="zonaMensajes" class="zona-mensajes">
+                <!-- Los mensajes aparecen aquí automáticamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: MERCHANDISING -->
+    <section id="merch" class="merch-section">
+        <h2 class="section-title">🔥 MERCH RO-LEE MC</h2>
+        <div class="merch-grid">
+            <div class="merch-item">
+                <img src="file:///D:/Downloads/WhatsApp%20Image%202025-11-22%20at%208.32.44%20AM.jpeg" alt="Camiseta RO-LEE MC" class="merch-image">
+                <h3 class="merch-title">Camiseta Classic</h3>
+                <p class="merch-description">Camiseta premium con el logo de RO-LEE MC. 100% algodón, calidad premium.</p>
+                <ul class="merch-features">
+                    <li>100% Algodón Premium</li>
+                    <li>Estampado de alta calidad</li>
+                    <li>Talles S, M, L, XL</li>
+                    <li>Envio gratis</li>
+                </ul>
+                <div class="sizes">
+                    <button class="size-btn active">S</button>
+                    <button class="size-btn">M</button>
+                    <button class="size-btn">L</button>
+                    <button class="size-btn">XL</button>
+                </div>
+                <div class="merch-price">$60.000 COP</div>
+                <p class="stock-info">✅ EN STOCK</p>
+                <button class="btn-comprar" onclick="comprarProducto('Camiseta Classic')">
+                    🛒 COMPRAR AHORA
+                </button>
+            </div>
+            
+            <div class="merch-item">
+                <img src="file:///D:/Downloads/WhatsApp%20Image%202025-11-22%20at%208.32.45%20AM.jpeg" alt="Sudadera RO-LEE MC" class="merch-image">
+                <h3 class="merch-title">Sudadera Hoodie</h3>
+                <p class="merch-description">Sudadera con capucha, perfecta para el estilo urbano. Calidad superior.</p>
+                <ul class="merch-features">
+                    <li>Mezcla algodón/poliéster</li>
+                    <li>Bolsillo frontal canguro</li>
+                    <li>Talles M, L, XL, XXL</li>
+                    <li>Envio gratis</li>
+                </ul>
+                <div class="sizes">
+                    <button class="size-btn">M</button>
+                    <button class="size-btn active">L</button>
+                    <button class="size-btn">XL</button>
+                    <button class="size-btn">XXL</button>
+                </div>
+                <div class="merch-price">$120.000 COP</div>
+                <p class="stock-info">✅ EN STOCK</p>
+                <button class="btn-comprar" onclick="comprarProducto('Sudadera Hoodie')">
+                    🛒 COMPRAR AHORA
+                </button>
+            </div>
+
+            <div class="merch-item">
+                <img src="file:///D:/Downloads/WhatsApp%20Image%202025-11-22%20at%208.49.52%20AM.jpeg" alt="Buso RO-LEE MC" class="merch-image">
+                <h3 class="merch-title">Buso Crewneck</h3>
+                <p class="merch-description">Buso estilo crewneck con diseño exclusivo RO-LEE MC. Elegancia urbana.</p>
+                <ul class="merch-features">
+                    <li>Algodón French Terry</li>
+                    <li>Acabados premium</li>
+                    <li>Talles S, M, L, XL</li>
+                    <li>Envio gratis</li>
+                </ul>
+                <div class="sizes">
+                    <button class="size-btn">S</button>
+                    <button class="size-btn active">M</button>
+                    <button class="size-btn">L</button>
+                    <button class="size-btn">XL</button>
+                </div>
+                <div class="merch-price">$85.000 COP</div>
+                <p class="stock-info">✅ EN STOCK</p>
+                <button class="btn-comprar" onclick="comprarProducto('Buso Crewneck')">
+                    🛒 COMPRAR AHORA
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1436,7 +1752,7 @@
 
     <!-- NUEVA SECCIÓN: ROLEMUSCIK FLICK -->
     <section id="rolemuscik" class="rolemuscik-section">
-        <h2 class="section-title">ROLEMUSCIK FLICK</h2>
+        <h2 class="section-title">ROLEEMUSCIK FLICK</h2>
         
         <!-- PRODUCCIONES VISUALES -->
         <div class="categoria-producciones">
@@ -1472,7 +1788,7 @@
         <div class="categoria-producciones">
             <div class="producciones-grid">
                 <div class="produccion-item">
-                    <h4 class="produccion-titulo">PRODUCCIÓN ROLEMUSCIK FLICK</h4>
+                    <h4 class="produccion-titulo">PRODUCCIÓN ROLEEMUSCIK FLICK</h4>
                     <div class="video-container">
                         <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F112696424237427%2Fvideos%2F511217193763579%2F&show_text=false&width=560&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
                     </div>
@@ -1484,7 +1800,7 @@
                     <div class="video-container">
                         <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1240394830798395%2F&show_text=false&width=560&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
                     </div>
-                    <p class="produccion-desc">Con MENTES NOCTURNAS - ROLEMUSCIK FLICK</p>
+                    <p class="produccion-desc">Con MENTES NOCTURNAS - ROLEEMUSCIK FLICK</p>
                 </div>
                 
                 <div class="produccion-item">
@@ -1522,7 +1838,7 @@
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/ExNRr1Uw-yE" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <p class="produccion-desc">Uno de los primeros videos que realizamos</p>
+                    <p class="produccion-desc"></p>
                 </div>
             </div>
         </div>
@@ -1557,67 +1873,6 @@
         </div>
     </div>
 
-    <!-- FORO PERMANENTE MEJORADO -->
-    <section id="forum" class="forum-section">
-        <div class="forum-container">
-            <h2 class="forum-title">🎤 EL TEMPLO - DEBATES HIP HOP</h2>
-            
-            <!-- ESTADÍSTICAS DEL FORO -->
-            <div class="forum-stats">
-                <h3 style="color: var(--primary); margin-bottom: 15px;">COMUNIDAD ACTIVA</h3>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number" id="totalMensajes">0</div>
-                        <div class="stat-label">MENSAJES</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="totalUsuarios">0</div>
-                        <div class="stat-label">USUARIOS</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="totalLikes">0</div>
-                        <div class="stat-label">LIKES</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CATEGORÍAS DE DEBATE -->
-            <div class="forum-categories">
-                <button class="category-btn active" onclick="filtrarMensajes('todos')">🎵 TODOS</button>
-                <button class="category-btn" onclick="filtrarMensajes('musica')">🎤 MÚSICA</button>
-                <button class="category-btn" onclick="filtrarMensajes('letras')">📝 LETRAS</button>
-                <button class="category-btn" onclick="filtrarMensajes('escena')">🏙️ ESCENA</button>
-                <button class="category-btn" onclick="filtrarMensajes('produccion')">🎧 PRODUCCIÓN</button>
-                <button class="category-btn" onclick="filtrarMensajes('freestyle')">🔥 FREESTYLE</button>
-            </div>
-            
-            <!-- FORMULARIO MEJORADO -->
-            <div class="formulario-foro">
-                <input type="text" id="userName" placeholder="🎤 Tu nombre o alias (obligatorio)" maxlength="30">
-                <select id="postCategory">
-                    <option value="musica">🎵 Música</option>
-                    <option value="letras">📝 Letras</option>
-                    <option value="escena">🏙️ Escena</option>
-                    <option value="produccion">🎧 Producción</option>
-                    <option value="freestyle">🔥 Freestyle</option>
-                </select>
-                <textarea id="postText" placeholder="💭 Escribe tu debate sobre hip hop... 
-¿Qué álbum te marcó? 
-¿Qué artista está cambiando el juego? 
-¿Cómo ves la evolución del género?" maxlength="500"></textarea>
-                <div class="char-count" id="charCount">0/500 caracteres</div>
-                <button class="btn-publicar" onclick="publicarMensaje()">
-                    🚀 PUBLICAR EN EL TEMPLO
-                </button>
-            </div>
-            
-            <!-- ZONA DE MENSAJES MEJORADA -->
-            <div id="zonaMensajes" class="zona-mensajes">
-                <!-- Los mensajes aparecen aquí automáticamente -->
-            </div>
-        </div>
-    </section>
-
     <!-- REDES SOCIALES -->
     <section class="links">
         <h2 class="section-title">CONECTA</h2>
@@ -1640,7 +1895,7 @@
     <footer>
         <div class="footer-logo"></div>
         <p>&copy; 2024 RO-LEE MC. Todos los derechos reservados.</p>
-        <p style="margin-top: 15px; color: var(--primary); font-size: 1.1rem;">yosoy hiphop - Donde el flow es sagrado</p>
+        <p style="margin-top: 15px; color: var(--primary); font-size: 1.1rem;">YO SOY HIPHOP </p>
     </footer>
 
     <!-- BOTÓN SCROLL TO TOP -->
@@ -1855,6 +2110,23 @@
                 charCount.style.color = 'var(--text-muted)';
             }
         }
+
+        // ===== SISTEMA DE MERCH =====
+        function comprarProducto(producto) {
+            alert(`🛒 ¡Perfecto! Has seleccionado: ${producto}\n\n📞 Para completar tu compra, contáctanos por WhatsApp o Instagram.\n\n💬 También puedes escribirnos al foro de debates.`);
+        }
+
+        // Selección de tallas
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('size-btn')) {
+                // Remover active de todos los botones del mismo contenedor
+                e.target.parentElement.querySelectorAll('.size-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Agregar active al botón clickeado
+                e.target.classList.add('active');
+            }
+        });
 
         // ===== SCROLL TO TOP =====
         function scrollToTop() {
